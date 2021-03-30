@@ -1,0 +1,125 @@
+<style>
+	.product-attr {
+		color: gray;
+		font-size: 1.25rem;
+	}
+	dt, dd{
+		display: inline;
+	}
+</style>
+
+<main class="main">
+	<div class="page-header text-center">
+		<div class="container">
+			<h1 class="page-title">{{title}}</h1>
+		</div><!-- End .container -->
+	</div><!-- End .page-header -->
+	<div class="page-content">
+		<div class="cart">
+			<div class="container">
+				<div class="row mt-4">
+					<div class="ml-auto col-lg-5 border-right">
+						<h5><u>ORDER INFO</u></h5>
+						<dl class="dl-horizontal">
+							<dt>Date : </dt>
+							<dd class="fixdate">{{order.Date}}</dd><br>
+							<dt>Number : </dt>
+							<dd>{{order.Number}}</dd><br>
+							<dt>Total : </dt>
+							<dd>&#2547; {{order.Total}}</dd><br>
+							<dt>Status : </dt>
+							<dd>{{order.Status}}</dd><br>
+							<dt>Note : </dt>
+							<dd>{{order.Note}}</dd><br>
+						</dl>
+					</div>
+					<div class="col-lg-5 mr-auto">
+						<h5><u>BILLING INFO</u></h5>
+						<dl class="dl-horizontal">
+							<dt>Name : </dt>
+							<dd>{{order.CustomerName}}</dd><br>
+							<dt>Phone : </dt>
+							<dd>{{order.CustomerPhone}}</dd><br>
+							<dt>Address : </dt>
+							<dd>{{order.BillingAddress}}</dd><br>
+							<dt>Area : </dt>
+							<dd>{{order.BillingArea}}</dd><br>
+							<dt>City : </dt>
+							<dd>{{order.BillingCity}}</dd><br>
+						</dl>
+					</div>
+				</div>
+				<div class="row">
+					<div class="mx-auto col-lg-10">
+						<table class="table table-cart table-mobile">
+							<thead>
+								<tr>
+									<th>Product</th>
+									<th>Price</th>
+									<th>Quantity</th>
+									<th>Total</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								{{#each items}}
+								<tr>
+									<td class="product-col">
+										<div class="product">
+											<figure class="product-media">
+												<a href="/product/{{Product.Slug}}">
+													<img src="{{Product.MainImage}}" alt="Product image">
+												</a>
+											</figure>
+
+											<h3 class="product-title">
+												<a href="/product/{{Product.Slug}}">{{Product.Name}}</a>
+
+												{{#if Color}}
+												<br><span class="product-attr">Color : {{Color}}</span>
+												{{/if}}
+												{{#if Size}}
+												<br><span class="product-attr">Size : {{Size}}</span>
+												{{/if}}
+
+											</h3><!-- End .product-title -->
+
+										</div><!-- End .product -->
+									</td>
+									<td class="price-col">&#2547; {{Price}}</td>
+									<td class="quantity-col">
+										<div class="cart-product-quantity">
+											{{Quantity}}
+										</div><!-- End .cart-product-quantity -->
+									</td>
+									<td class="total-col">&#2547; {{Total}}</td>
+								</tr>
+								{{/each}}
+								<tr>
+									<td colspan="3">Total</td>
+									<td class="total-col">&#2547; {{order.Total}}</td>
+								</tr>
+							</tbody>
+						</table><!-- End .table table-wishlist -->
+					</div>
+				</div><!-- End .row -->
+			</div><!-- End .container -->
+		</div><!-- End .cart -->
+	</div><!-- End .page-content -->
+</main><!-- End .main -->
+
+<script>
+    function dateFormat(dateInput) {
+        if (dateInput === null) {
+            return "";
+        } else {
+            var d = new Date(dateInput);
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            return (d.getDate() + '-' + months[d.getMonth()] + '-' + d.getFullYear() + " " + d.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true, timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone }));
+        }
+    }
+
+    $('.fixdate').each(function (index) {
+        $(this).html(dateFormat($(this).text()));
+    });
+</script>

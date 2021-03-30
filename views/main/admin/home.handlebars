@@ -1,0 +1,128 @@
+<style>
+    .no-print {
+        display: block;
+    }
+    .label-Pending{
+        background-color: orange;
+    }
+</style>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            {{title}}
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Info boxes -->
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3>{{categoryCount}}</h3>
+                        <p>Number of Categories</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-folder"></i>
+                    </div>
+                    <a href="/admin/category" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="small-box bg-yellow">
+                    <div class="inner">
+                        <h3>{{productCount}}</h3>
+                        <p>Number of Products</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-cubes"></i>
+                    </div>
+                    <a href="/admin/product" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div><!-- /.col -->
+
+            <!-- fix for small devices only -->
+            <div class="clearfix visible-sm-block"></div>
+
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>{{orders.length}}</h3>
+                        <p>Today's Order</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-list"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div><!-- /.col -->
+
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3>{{customerCount}}</h3>
+                        <p>Number of Customers</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-people"></i>
+                    </div>
+                    <a href="/admin/customer" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Recent Orders</h3>
+                        {{!-- <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div> --}}
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table class="table no-margin">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Order No</th>
+                                        <th>Customer Name</th>
+                                        <th>Customer Phone</th>
+                                        <th class="text-right">Amount</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each orders}}
+                                    <tr>
+                                        <td class="fixdate">{{Date}}</td>
+                                        <td>{{Number}}</td>
+                                        <td>{{CustomerName}}</td>
+                                        <td>{{CustomerPhone}}</td>
+                                        <td class="text-right">{{Total}}</td>
+                                        <td><span class="label label-{{Status}}">{{Status}}</span></td>
+                                        <td>
+                                            <a href="/admin/order/details/{{_id}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                                            <a class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div><!-- /.table-responsive -->
+                    </div><!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <a href="/admin/order/" class="btn btn-sm btn-primary btn-flat pull-right">View All</a>
+                    </div><!-- /.box-footer -->
+                </div><!-- /.box -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+
+    </section><!-- /.content -->
+</div>

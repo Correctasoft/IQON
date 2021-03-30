@@ -1,0 +1,82 @@
+{{#if products}}
+<div class="products mb-3">
+    <div class="row justify-content-center">
+        {{#each products}}
+        <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+            <div class="product product-7 text-center">
+                <figure class="product-media">
+                    {{#if IsFeatured}}
+                    <span class="product-label label-new">Featured</span>
+                    {{/if}}
+
+                    {{#if StockAvailable}}
+
+                    {{else}}
+                    <span class="product-label label-danger">Stock Out</span>
+                    {{/if}}
+                    <a href="/product/{{Slug}}">
+                        <img src="{{MainImage}}" alt="Product image" class="product-image">
+                    </a>
+
+                    <div class="product-action-vertical">
+                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add
+                                to wishlist</span></a>
+                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
+                            title="Quick view"><span>Quick view</span></a>
+                        <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                    </div><!-- End .product-action-vertical -->
+
+                    <div class="product-action">
+                        <a onclick="addToCart('{{_id}}', 1)" class="btn-product btn-cart"><span>add
+                                to cart</span></a>
+                    </div><!-- End .product-action -->
+                </figure><!-- End .product-media -->
+
+                <div class="product-body">
+                    <div class="product-cat">
+                        <a href="/shop/category/{{Category.Slug}}">{{Category.Name}}</a>
+                    </div><!-- End .product-cat -->
+                    <h3 class="product-title"><a href="/product/{{Slug}}">{{Name}}</a></h3>
+                    <!-- End .product-title -->
+
+                    {{#ifCond SellingPrice '<' DiscountedPrice}}
+                    <div class="product-price mb-0">
+                        <del>BDT {{DiscountedPrice}} </del>
+                    </div>
+                    <div class="product-price">
+                        BDT {{SellingPrice}}
+                    </div>
+                    {{else}}
+                    <div class="product-price">
+                        BDT {{DiscountedPrice}}
+                    </div>
+                    {{/ifCond}}
+            </div><!-- End .product-body -->
+        </div><!-- End .product -->
+    </div><!-- End .product -->
+    {{/each}}
+</div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+</div><!-- End .row -->
+
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        {{#paginate current=current pages=pages itemsperpage=itemsperpage}}{{/paginate}}
+        {{!-- <li class="page-item disabled">
+            <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
+                <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
+            </a>
+        </li>
+        <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item-total">of 6</li>
+        <li class="page-item">
+            <a class="page-link page-link-next" href="#" aria-label="Next">
+                Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
+            </a>
+        </li> --}}
+    </ul>
+</nav>
+{{else}}
+<h4 class="text-center"> Porducts found !</h4>
+{{/if}}

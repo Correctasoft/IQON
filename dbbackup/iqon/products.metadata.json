@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"iqon.products"}],"uuid":"6e048564334e49babb2ef2f00653a08e"}

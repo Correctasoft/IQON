@@ -1,0 +1,1 @@
+./mongorestore --uri mongodb+srv://iqon-admin:iqon@cluster0.up5zv.mongodb.net --db iqon 'D:/iqon'  --drop

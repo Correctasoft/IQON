@@ -1,0 +1,66 @@
+<style>
+    .Product-image {
+        height: 50px;
+        width: 80px;
+    }
+
+    #ProductGrid_dialogEdit_wrapper {
+        width: 70% !important;
+    }
+
+
+    h3 {
+        text-align: center;
+    }
+</style>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            {{title}}
+        </h1>
+    </section>
+    <h3>Select Product</h3>
+    <div class="form-group col-md-12">
+        <div class="col-md-4" style="margin-left: 35%;">
+            <div class="control text-center">
+                <input type="text" id="productsdropdown" name="productsdropdown" />
+                <small>The images should be 1600px X 1600px</small>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-12" id="uploadForm" style="margin-left: 20%;">
+            
+    </div>
+
+
+    <!-- Main content -->
+    {{!-- section --}}
+    <section class="section my-4">
+        <div class="container text-center">
+            {{!-- <div class="row justify-content-center">
+                <div class="row">
+                    <div class="col-md-12 p-4" id="uploadForm">
+                   
+                    </div>
+                </div>
+            </div> --}}
+
+            {{!-- display images --}}
+            <section class="mt-5">
+                <div class="row" id="imagesForProduct">
+
+                </div>
+            </section>
+            {{!-- /display images --}}
+
+            <div class="row">
+                <div id="test"></div>
+            </div>
+
+        </div>
+    </section>
+    {{!-- /section --}}
+</div>
+<script src="/view-js/admin/products-images-view.js" type="text/javascript"> </script>

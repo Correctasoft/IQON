@@ -1,0 +1,110 @@
+<main class="main">
+    <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+        <div class="container">
+            <h1 class="page-title">{{title}}</h1>
+        </div><!-- End .container -->
+    </div><!-- End .page-header -->
+    <div class="page-content">
+        <div class="dashboard">
+            <div class="container m-4">
+                <div class="row">
+                    <aside class="col-md-4 col-lg-3">
+                        <ul class="nav nav-dashboard flex-column mb-3 mb-md-0" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="tab-account-link" data-toggle="tab" href="#tab-account"
+                                    role="tab" aria-controls="tab-account" aria-selected="true">Account Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="tab-orders-link" data-toggle="tab" href="#tab-orders" role="tab"
+                                    aria-controls="tab-orders" aria-selected="false">Orders</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="tab-change-password-link" data-toggle="tab"
+                                    href="#tab-change-password" role="tab" aria-controls="tab-change-password"
+                                    aria-selected="false">Change Password</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/auth/logout">Log Out</a>
+                            </li>
+                        </ul>
+                    </aside><!-- End .col-lg-3 -->
+
+                    <div class="col-md-8 col-lg-9">
+                        <div class="tab-content">
+                            <div class="tab-pane fade" id="tab-orders" role="tabpanel"
+                                aria-labelledby="tab-orders-link">
+                                {{#ifCond orders.length '>' 0}}
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <table class="table table-cart table-mobile">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Order Number</th>
+                                                    <th>Status</th>
+                                                    <th>Total</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                {{#each orders}}
+                                                <tr>
+                                                    <td class="fixdate">{{Date}}</td>
+                                                    <td>{{Number}}</td>
+                                                    <td>{{Status}}</td>
+                                                    <td class="price-col">&#2547; {{Total}}</td>
+                                                    <td class="remove-col">
+                                                        <a href="/customer/order/details/{{_id}}" class="btn btn-outline-primary-2">View</a>
+                                                    </td>
+                                                </tr>
+                                                {{/each}}
+                                            </tbody>
+                                        </table><!-- End .table table-wishlist -->
+                                    </div>
+                                </div><!-- End .row -->
+                                {{else}}
+                                <p>No order has been made yet.</p>
+                                <a href="/shop" class="btn btn-outline-primary-2"><span>GO SHOP</span><i
+                                        class="icon-long-arrow-right"></i></a>
+                                {{/ifCond}}
+
+                            </div><!-- .End .tab-pane -->
+
+                            <div class="tab-pane fade" id="tab-change-password" role="tabpanel"
+                                aria-labelledby="tab-change-password-link">
+                                <div class="row">
+                                    <div class="mx-auto col-lg-6">
+                                        {{> website/customer-account/change-password }}
+                                    </div><!-- End .col-lg-6 -->
+                                </div><!-- End .row -->
+                            </div><!-- .End .tab-pane -->
+
+                            <div class="tab-pane fade show active" id="tab-account" role="tabpanel"
+                                aria-labelledby="tab-account-link">
+                                 {{> website/customer-account/basic-info }}
+                            </div><!-- .End .tab-pane -->
+                        </div>
+                    </div><!-- End .col-lg-9 -->
+                </div><!-- End .row -->
+            </div><!-- End .container -->
+        </div><!-- End .dashboard -->
+    </div><!-- End .page-content -->
+</main><!-- End .main -->
+
+<script>
+    function dateFormat(dateInput) {
+        if (dateInput === null) {
+            return "";
+        } else {
+            var d = new Date(dateInput);
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            return (d.getDate() + '-' + months[d.getMonth()] + '-' + d.getFullYear() + " " + d.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true, timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone }));
+        }
+    }
+
+    $('.fixdate').each(function (index) {
+        $(this).html(dateFormat($(this).text()));
+    });
+</script>

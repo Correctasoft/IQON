@@ -1,0 +1,77 @@
+<style>
+    .category-image{
+        height: 50px;
+        width: 80px;
+    }
+</style>
+<script src="/view-js/admin/categories-view.js" type="text/javascript"> </script>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            {{title}}
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="box box-info">
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <div class="row mx-0">
+                                <div id="CategoryGrid"></div>
+                                <div id="CategoryTemplate" style="display: none">
+                                    <b>Category</b>
+                                    <form>
+                                        <div class="form-group p-3 ml-auto mr-auto col-4 text-center">
+                                                <img class="img-thumbnail" style='height: 120px;width:200px'
+                                                    id='category_image' src='\{{: Image }}' alt='\{{: Name }}'>
+                                                <br>
+                                                <div style="display: none;">
+                                                    <input type="file" class="custom-file-input" id="file-select"
+                                                        onchange="gertcategory_image()" lang="es">
+                                                    <input id="categoryImage" name="categoryImage"
+                                                        value="\{{: Image}}" class="form-control"
+                                                        type="text" />
+                                                </div>
+                                            <span class="btn btn-primary mt-2"
+                                                onclick="document.getElementById('file-select').click();"
+                                                for="customFile">Upload <i class="fa fa-upload"></i></span>
+                                        </div>
+                                        <div class="form-group p-3">
+                                            <label for="categoryname">Name</label>
+                                            <input id="categoryName" name="categoryName" value="\{{: Name}}"
+                                                class="form-control" placeholder="Name" />
+                                        </div>
+                                        <div class="form-group p-3">
+                                            <label for="categorywidth">Parent</label>
+                                            <input type="text" id="categoryParent" class="form-control" name="categoryParent" />
+                                        </div>
+                                        <div class="form-group p-3 text-center">
+                                            <label>Is Featured</label>
+                                            <input type="checkbox" id="categoryIsFeatured" name="categoryIsFeatured"/>
+                                        </div>
+                                    </form>
+                                    <table cellspacing="10">
+                                        <tr style="display: none;">
+                                            <td style="text-align: right;">id
+                                            </td>
+                                            <td style="text-align: left">
+                                                <input id="categoryId" name="category_id" value="\{{: _id}}"
+                                                    disabled="disabled" class="e-field e-ejinputtext valid e-disable"
+                                                    style="text-align: right; width: 116px; height: 28px" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div><!-- /.table-responsive -->
+                        </><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+    </section><!-- /.content -->
+</div>

@@ -1,0 +1,150 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            {{title}}
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Info boxes -->
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <!-- Info box -->
+                <div class="box box-info" style="height: 280px;">
+                    <div class="box-header">
+                        <h3 class="box-title">Details of {{customer.Name}}</h3>
+                        {{!-- <div class="box-tools pull-right">
+                            <div class="label bg-aqua">Label</div>
+                        </div> --}}
+                    </div>
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table class="table no-margin">
+                                <tr>
+                                    <th>Name</th>
+                                    <td>{{customer.Name}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Phone</th>
+                                    <td>{{customer.Phone}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Address</th>
+                                    <td colspan="3">{{customer.Address}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Business</th>
+                                    <td colspan="3">{{customer.Business.Name}}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">Debit</th>
+                                    <th class="text-center">Credit</th>
+                                    <th class="text-center">Balance</th>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">{{customer.Debit}}</td>
+                                    <td class="text-center">{{customer.Credit}}</td>
+                                    <td class="text-center">{{customer.Balance}}</td>
+                                </tr>
+                            </table>
+                        </div><!-- /.table-responsive -->
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <!-- Info box -->
+                <div class="box box-info" style="height: 280px;">
+                    <div class="box-header">
+                        <h3 class="box-title">Transaction For {{customer.Name}}</h3>
+                    </div>
+                    <form action="/transaction" method="POST">
+                    <div class="box-body">
+                        <div class="row">
+                            <input type="hidden" name="transaction_business" value="{{customer.Business._id}}">
+                            <input type="hidden" name="transaction_customer" value="{{customer._id}}">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label for="transaction-type" class="col-form-label">Transaction Type</label>
+                                    <select class="form-control" id="transaction-type" name="transaction_type">
+                                        <option value="Credit">Credit</option>
+                                        <option value="Debit">Debit</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label for="transaction-amount" class="col-form-label">Amount:</label>
+                                    <input type="number" class="form-control" id="transaction-amount" name="transaction_amount">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label for="transaction-amount" class="col-form-label">Note:</label>
+                                    <textarea type="number" class="form-control" id="transaction-note" name="transaction_note"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <button type="submit" class="btn btn-sm btn-info btn-flat pull-right">Save</button>
+                    </div><!-- /.box-footer -->
+                    </form>
+                </div><!-- /.box -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Transaction history for Customer1 </h3>
+                        {{!-- <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div> --}}
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table class="table no-margin">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Transaction Type</th>
+                                        <th class="text-right">Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>01/01/2021</td>
+                                        <td>Credit</td>
+                                        <td class="text-right">10000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>15/01/2021</td>
+                                        <td>Debit</td>
+                                        <td class="text-right">5000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>25/01/2021</td>
+                                        <td>Credit</td>
+                                        <td class="text-right">12000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div><!-- /.table-responsive -->
+                    </div><!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        {{!-- <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+                        <a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+                        --}}
+                    </div><!-- /.box-footer -->
+                </div><!-- /.box -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+
+    </section><!-- /.content -->
+</div>

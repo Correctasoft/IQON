@@ -1,0 +1,85 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            {{title}}
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Info boxes -->
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                
+                <button class="btn btn-outline-primary btn-add mb-4 mr-2" data-toggle="modal" data-target="#stockAddModal"><i class="fa fa-plus"> Add a Stock Item</i></button>
+                <button class="btn btn-outline-primary btn-add mb-4 mr-2" data-toggle="modal" data-target="#stockBuyModal"> Buy Stock Item</i></button>
+                <button class="btn btn-outline-primary btn-add mb-4 mr-2" data-toggle="modal" data-target="#stockSellModal"> Sell Stock Item</i></button>
+            </div>
+        </div><!-- /.row -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <div class="input-group custom-searchbar">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            <input class="form-control" onkeyup="searchInTable(this, 'stocktable')" id="myInput" type="text" width="100%" placeholder="search...">
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table class="table no-margin">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Current Quantity</th>
+                                        <th class='text-center'>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="stocktable">
+                                    {{#each stockList}}
+                                    <tr>
+                                        <td>{{Name}}</td>
+                                        <td>{{Quantity}}</td>
+                                        <th class='text-center'>
+                                            <button class="btn btn-warning p-2" data-toggle="modal" data-target="#stockEditModal" data-name="{{Name}}" data-id="{{_id}}"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-danger p-2" onclick="deleteStockItem('{{_id}}')"><i class="fa fa-trash"></i></button>    
+                                        </th>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div><!-- /.table-responsive -->
+                    </div><!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        {{!-- <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+                        <a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a> --}}
+                    </div><!-- /.box-footer -->
+                </div><!-- /.box -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+
+    </section><!-- /.content -->
+</div>
+
+<!-- hiddend form form for delte -->
+<div style="display:none"> 
+    <form action="/stock/delete" method="POST">
+        <input type="text" value="" id="stock-to-be-deleted" name="stock_id">
+        <button type="submit" id="stock-delete-button" >btn</button>
+    </form>
+</div>
+
+<script>
+    function deleteStockItem (id){
+        $('#stock-to-be-deleted').val(id);
+        $('#stock-delete-button').click();
+    }
+</script>
+
+{{> stock/stock-add-modal }}
+{{> stock/stock-edit-modal }}
+{{> stock/stock-buy-modal }}
+{{> stock/stock-sell-modal }}

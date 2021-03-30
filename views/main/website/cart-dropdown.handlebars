@@ -1,0 +1,80 @@
+{{#if user}}
+<div class="dropdown cart-dropdown">
+    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+        data-display="static">
+        <i class="icon-shopping-cart"></i>
+        <span class="cart-count">{{cart.Quantity}}</span>
+    </a>
+    {{#ifCond cartItems.length '>' 0}}
+    <div class="dropdown-menu dropdown-menu-right">
+        <div class="dropdown-cart-products">
+            {{#each cartItems}}
+            <div class="product">
+                <div class="product-cart-details">
+                    <h4 class="product-title">
+                        <a href="/product/{{Product.Slug}}">{{Product.Name}}</a>
+                    </h4>
+
+                    <span class="cart-product-info">
+                        {{#if Color}}
+                            <span class="cart-product-qty">Color : {{Color}}</span><br>
+                        {{/if}}
+                        {{#if Size}}
+                            <span class="cart-product-qty">Size : {{Size}}</span><br>
+                        {{/if}}
+                        <span class="cart-product-qty">{{Quantity}}</span> x 
+                        {{Price}}
+                    </span>
+                </div><!-- End .product-cart-details -->
+
+                <figure class="product-image-container">
+                    <a href="/product/{{Product.Slug}}" class="product-image">
+                        <img src="{{Product.MainImage}}" alt="product">
+                    </a>
+                </figure>
+                <a onclick="removeFromCart('{{_id}}')" class="btn-remove" style="cursor: pointer;" title="Remove Product"><i class="icon-close"></i></a>
+            </div><!-- End .product -->
+            {{/each}}
+        </div><!-- End .cart-product -->
+
+        <div class="dropdown-cart-total">
+            <span>Total</span>
+
+            <span class="cart-total-price">&#2547; {{cart.Total}}</span>
+        </div><!-- End .dropdown-cart-total -->
+
+        <div class="dropdown-cart-action">
+            <a href="/cart" class="btn btn-primary">View Cart</a>
+            <a href="/checkout" class="btn btn-outline-primary-2"><span>Checkout</span><i
+                    class="icon-long-arrow-right"></i></a>
+        </div><!-- End .dropdown-cart-total -->
+
+    </div><!-- End .dropdown-menu -->
+    {{else}}
+    <div class="dropdown-menu dropdown-menu-right text-center">
+
+        <b>No items in cart</b>
+        <a href="/shop" class="btn btn-outline-primary-2" id="signup-button">
+            <span>GO TO SHOP</span>
+        </a>
+    </div>
+    {{/ifCond}}
+</div><!-- End .cart-dropdown -->
+{{else}}
+
+<div class="dropdown cart-dropdown">
+    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+        data-display="static">
+        <i class="icon-shopping-cart"></i>
+    </a>
+
+    <div class="dropdown-menu dropdown-menu-right text-center">
+
+        <b>please Signup or Login to use cart</b>
+        <a href="#signin-modal" data-toggle="modal" class="btn btn-outline-primary-2" id="signup-button">
+            <span>SIGN UP / LOG IN</span>
+        </a>
+    </div>
+</div>
+
+{{/if}}

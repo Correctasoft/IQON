@@ -1,0 +1,53 @@
+{{!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#customerEditModal">Open modal for @mdo</button> --}}
+
+<div class="modal fade" id="customerEditModal" tabindex="-1" role="dialog" aria-labelledby="customerEditModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="customerEditModalLabel">Edit Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/customer/edit" method="POST">
+        <div class="modal-body">
+            <input type="hidden" id="customer-id-edit" name="customer_id">
+            <div class="form-group">
+              <label for="customer-name" class="col-form-label">Name:</label>
+              <input type="text" class="form-control" id="customer-name-edit" name="customer_name" required>
+            </div>
+            <div class="form-group">
+              <label for="customer-phone" class="col-form-label">Phone:</label>
+              <input type="text" class="form-control" id="customer-phone-edit" name="customer_phone" required>
+            </div>
+            <div class="form-group">
+              <label for="customer-address" class="col-form-label">Address:</label>
+              <textarea class="form-control" id="customer-address-edit" name="customer_address"></textarea>
+            </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('#customerEditModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var name = button.data('name') // Extract info from data-* attributes
+  var address = button.data('address') // Extract info from data-* attributes
+  var phone = button.data('phone') // Extract info from data-* attributes
+  var id = button.data('id') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('#customer-name-edit').val(name);
+  modal.find('#customer-address-edit').val(address);
+  modal.find('#customer-phone-edit').val(phone);
+  modal.find('#customer-id-edit').val(id);
+})
+</script>

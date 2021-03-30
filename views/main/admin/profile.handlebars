@@ -1,0 +1,70 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            {{title}}
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Info boxes -->
+        <div class="row">
+            <div class="col-md-6 col-sm-12 middle-in-desktop">
+                <button class="btn btn-outline-primary mb-4 pull-right" onclick="startEdit();"><i class="fa fa-edit">
+                        Edit</i></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 middle-in-desktop">
+                <!-- Info box -->
+                <div class="box box-info">
+                    <form>
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="user-name" class="col-form-label">User Name:</label>
+                                <input type="text" class="form-control" id="user-name" value="Alexander Pierce">
+                            </div>
+                            <div class="form-group">
+                                <label for="user-email" class="col-form-label">Email:</label>
+                                <input type="email" class="form-control" id="user-email" value="alex@gmail.com">
+                            </div>
+                            <div class="form-group for-edit">
+                                <label for="user-password" class="col-form-label">Password:</label>
+                                <input type="password" class="form-control" id="user-password">
+                            </div>
+
+                            <div class="form-group for-edit">
+                                <label for="user-retype-password" class="col-form-label">Retype Password:</label>
+                                <input type="password" class="form-control" id="user-retype-password">
+                            </div>
+                            <div class="form-group for-edit">
+                                <label for="user-otp" class="col-form-label">OTP:</label>
+                                <input type="number" class="form-control" id="user-otp">
+                            </div>
+                            <div class="form-group">
+                                
+                            </div>
+                        </div><!-- /.box-body -->
+                        <div class="box-footer clearfix for-edit">
+                            <a class="btn btn-sm btn-primary pull-left" onclick="sendOTP();">Send OTP</a>
+                            <button type='submit' class="btn btn-sm btn-primary pull-right">Update</button>
+                        </div><!-- /.box-footer -->
+                    </form>
+                </div><!-- /.box -->
+            </div>
+        </div>
+    </section><!-- /.content -->
+</div>
+
+<script>
+    $('.for-edit').hide();
+    $('.form-control').prop('disabled', true);
+    function startEdit() {
+        $('.for-edit').show();
+        $('.form-control').prop('disabled', false);
+    }
+    function sendOTP(){
+        return;
+    }
+</script>

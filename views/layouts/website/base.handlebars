@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="/home/assets/js/jquery.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>IQON - {{title}}</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="IQON - Bootstrap eCommerce Template">
+    <meta name="author" content="p-themes">
+    <base href="/">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/home/assets/images/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/home/assets/images/demos/demo-7/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/home/assets/images/demos/demo-7/logo.png">
+    <link rel="manifest" href="/home/assets/images/icons/site.html">
+    <link rel="mask-icon" href="/home/assets/images/icons/safari-pinned-tab.svg" color="#666666">
+    <link rel="shortcut icon" href="/home/assets/images/demos/demo-7/logo.png">
+    <meta name="apple-mobile-web-app-title" content="IQON">
+    <meta name="application-name" content="IQON">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="msapplication-config" content="/home/assets/images/icons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="/home/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/home/assets/css/plugins/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="/home/assets/css/plugins/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="/home/assets/css/plugins/jquery.countdown.css">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="/home/assets/css/style.css">
+    {{!--
+    <link rel="stylesheet" href="/home/assets/css/skins/skin-demo-7.css">
+    <link rel="stylesheet" href="/home/assets/css/demos/demo-7.css"> --}}
+    <style>
+        {{!-- hiding quickview,
+                wish list,
+                compare --}}
+
+        .product-action-vertical {
+            display: none;
+        }
+
+        {{!-- fb and google login hide --}}
+
+        .form-choice {
+            display: none;
+        }
+
+        del {
+            color: red
+        }
+
+        .border-red {
+            border: 1px solid red;
+        }
+
+        .dropdown-menu {
+            box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
+        }
+
+        .menu .banner {
+            height: auto !important;
+        }
+
+        .product.product-7 .btn-product {
+            text-transform: uppercase;
+            color: #fff;
+            background-color: #333;
+        }
+
+        .btn-cart {
+            cursor: pointer;
+        }
+
+        .label-danger {
+            background-color: #c66;
+            color: white;
+        }
+
+        .sticky-wrapper .fixed {
+            box-shadow: 0 -3px 12px 0 #000;
+        }
+
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #loader>div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -20px;
+            margin-left: -25px;
+            width: 4rem;
+            height: 4rem;
+            text-align: center;
+            font-size: 10px;
+        }
+
+        /* The snackbar - position it at the bottom and in the middle of the screen */
+        #snackbar {
+            visibility: hidden;
+            /* Hidden by default. Visible on click */
+            min-width: 250px;
+            /* Set a default minimum width */
+            margin-left: -125px;
+            /* Divide value of min-width by 2 */
+            color: #fff;
+            /* White text color */
+            text-align: center;
+            /* Centered text */
+            border-radius: 2px;
+            /* Rounded borders */
+            padding: 16px;
+            /* Padding */
+            position: fixed;
+            /* Sit on top of the screen */
+            z-index: 1100;
+            /* Add a z-index if needed */
+            top: 10px;
+            right: 0;
+        }
+
+        /* Show the snackbar when clicking on a button (class added with JavaScript) */
+        #snackbar.show {
+            visibility: visible;
+            /* Show the snackbar */
+            /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+        However, delay the fade out process for 2.5 seconds */
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 4.5s;
+            animation: fadein 0.5s, fadeout 0.5s 4.5s;
+        }
+
+        /* Animations to fade the snackbar in and out */
+        @-webkit-keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @-webkit-keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <header class="header header-7">
+            <div class="header-top">
+                <div class="container-fluid">
+                    <div class="header-left">
+                        {{!-- <div class="header-dropdown"> --}}
+                            <a href="#">Currency: BDT</a>
+                            {{!--
+                        </div><!-- End .header-dropdown --> --}}
+
+                        {{!-- <div class="header-dropdown">
+                            <a href="#">Eng</a>
+                            <div class="header-menu">
+                                <ul>
+                                    <li><a href="#">English</a></li>
+                                    <li><a href="#">French</a></li>
+                                    <li><a href="#">Spanish</a></li>
+                                </ul>
+                            </div><!-- End .header-menu -->
+                        </div><!-- End .header-dropdown --> --}}
+                    </div><!-- End .header-left -->
+
+                    <div class="header-right">
+                        <ul class="top-menu">
+                            <li>
+                                <a href="#">Links</a>
+                                <ul>
+                                    <li><a href="tel:#"><i class="icon-phone"></i>Call: +88 0173 2239567</a></li>
+                                    {{!-- <li><a href="wishlist.html"><i class="icon-heart-o"></i>My Wishlist
+                                            <span>(3)</span></a></li> --}}
+                                    <li><a href="/about">About Us</a></li>
+                                    {{#if user}}
+                                    <li><a href="/auth/logout">Logout</a></li>
+                                    {{else}}
+                                    <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a>
+                                        {{/if}}
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul><!-- End .top-menu -->
+                    </div><!-- End .header-right -->
+                </div><!-- End .container-fluid -->
+            </div><!-- End .header-top -->
+
+            <div class="header-middle sticky-header">
+                <div class="container-fluid">
+                    <div class="header-left">
+                        <button class="mobile-menu-toggler">
+                            <span class="sr-only">Toggle mobile menu</span>
+                            <i class="icon-bars"></i>
+                        </button>
+
+                        {{!-- <a href="/" class="logo">
+                            <img src="/home/assets/images/demos/demo-7/logo.png" alt="IQON Logo" width="105"
+                                height="25">
+                        </a> --}}
+
+
+                        {{> website/base/menu }}
+                    </div><!-- End .header-left -->
+                    <div class="header-center">
+                        <a href="/" class="logo m-0">
+                            <img src="/home/assets/images/demos/demo-7/logo.png" alt="IQON Logo" width="100"
+                                height="30">
+                        </a>
+                    </div><!-- End .header-left -->
+                    <div class="header-right" style="margin-left: 0;">
+                        <div class="header-search header-search-extended header-search-visible">
+                            <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                            <form action="/shop/search" method="get">
+                                <div class="header-search-wrapper search-wrapper-wide">
+                                    <label for="q" class="sr-only">Search</label>
+                                    <input type="search" class="form-control" name="query" id="q"
+                                        placeholder="Search product ..." required>
+                                    <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+                                </div><!-- End .header-search-wrapper -->
+                            </form>
+                        </div><!-- End .header-search -->
+
+                        {{#if user}}
+                        <div class="dropdown compare-dropdown">
+                            <a href="/customer/my-account" class="dropdown-toggle" role="button" data-display="static"
+                                title="User Profile" aria-label="User Profile">
+                                <i class="icon-user"></i>
+                            </a>
+                        </div><!-- End .compare-dropdown -->
+                        {{/if}}
+                        <div id="cart-dropdown">
+                            <div class="dropdown cart-dropdown">
+                                <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false" data-display="static">
+                                    <i class="icon-shopping-cart"></i>
+                                    <span class="cart-count">0</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div><!-- End .header-right -->
+                </div><!-- End .container-fluid -->
+            </div><!-- End .header-middle -->
+        </header><!-- End .header -->
+        {{{body}}}
+
+
+        <footer class="footer footer-2">
+            {{!-- <div class="footer-middle">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-4">
+                            <div class="widget widget-about">
+                                <img src="/home/assets/images/demos/demo-7/logo-footer.png" class="footer-logo"
+                                    alt="Footer Logo" width="105" height="25">
+                                <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate
+                                    magna
+                                    eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
+                                    facilisis luctus, metus. </p>
+
+                                <div class="widget-about-info">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-4">
+                                            <span class="widget-about-title">Got Question? Call us 24/7</span>
+                                            <a href="tel:123456789">+0123 456 789</a>
+                                        </div><!-- End .col-sm-6 -->
+                                        <div class="col-sm-6 col-md-8">
+                                            <span class="widget-about-title">Payment Method</span>
+                                            <figure class="footer-payments">
+                                                <img src="/home/assets/images/payments.png" alt="Payment methods"
+                                                    width="272" height="20">
+                                            </figure><!-- End .footer-payments -->
+                                        </div><!-- End .col-sm-6 -->
+                                    </div><!-- End .row -->
+                                </div><!-- End .widget-about-info -->
+                            </div><!-- End .widget about-widget -->
+                        </div><!-- End .col-sm-12 col-lg-4 -->
+
+                        <div class="col-sm-4 col-lg-2">
+                            <div class="widget">
+                                <h4 class="widget-title">Useful links</h4><!-- End .widget-title -->
+
+                                <ul class="widget-list">
+                                    <li><a href="about.html">About IQON</a></li>
+                                    <li><a href="#">How to shop on IQON</a></li>
+                                    <li><a href="faq.html">FAQ</a></li>
+                                    <li><a href="contact.html">Contact us</a></li>
+                                    <li><a href="login.html">Log in</a></li>
+                                </ul><!-- End .widget-list -->
+                            </div><!-- End .widget -->
+                        </div><!-- End .col-sm-4 col-lg-2 -->
+
+                        <div class="col-sm-4 col-lg-2">
+                            <div class="widget">
+                                <h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
+
+                                <ul class="widget-list">
+                                    <li><a href="#">Payment Methods</a></li>
+                                    <li><a href="#">Money-back guarantee!</a></li>
+                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="#">Shipping</a></li>
+                                    <li><a href="#">Terms and conditions</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                </ul><!-- End .widget-list -->
+                            </div><!-- End .widget -->
+                        </div><!-- End .col-sm-4 col-lg-2 -->
+
+                        <div class="col-sm-4 col-lg-2">
+                            <div class="widget">
+                                <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
+
+                                <ul class="widget-list">
+                                    <li><a href="#">Sign In</a></li>
+                                    <li><a href="/cart">View Cart</a></li>
+                                    <li><a href="#">My Wishlist</a></li>
+                                    <li><a href="#">Track My Order</a></li>
+                                    <li><a href="#">Help</a></li>
+                                </ul><!-- End .widget-list -->
+                            </div><!-- End .widget -->
+                        </div><!-- End .col-sm-4 col-lg-2 -->
+
+                        <div class="col-sm-6 col-lg-2">
+                            <div class="widget widget-newsletter">
+                                <h4 class="widget-title">Sign up to newsletter</h4><!-- End .widget-title -->
+
+                                <p>Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan.</p>
+
+                                <form action="#">
+                                    <div class="input-group">
+                                        <input type="email" class="form-control" placeholder="Enter your Email Address"
+                                            aria-label="Email Adress" required>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-dark" type="submit"><i
+                                                    class="icon-long-arrow-right"></i></button>
+                                        </div><!-- .End .input-group-append -->
+                                    </div><!-- .End .input-group -->
+                                </form>
+                            </div><!-- End .widget -->
+                        </div><!-- End .col-sm-6 col-lg-2 -->
+                    </div><!-- End .row -->
+                </div><!-- End .container-fluid -->
+            </div><!-- End .footer-middle --> --}}
+
+            <div class="footer-bottom">
+                <div class="container-fluid">
+                    <p class="footer-copyright">Copyright © 2019 IQON Store. All Rights Reserved.</p>
+                    <!-- End .footer-copyright -->
+                    <ul class="footer-menu">
+                        <li><a href="#">Terms Of Use</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul><!-- End .footer-menu -->
+
+                    <div class="social-icons social-icons-color">
+                        <span class="social-label">Social Media</span>
+                        <a href="#" class="social-icon social-facebook" title="Facebook" target="_blank"><i
+                                class="icon-facebook-f"></i></a>
+                        <a href="#" class="social-icon social-twitter" title="Twitter" target="_blank"><i
+                                class="icon-twitter"></i></a>
+                        <a href="#" class="social-icon social-instagram" title="Instagram" target="_blank"><i
+                                class="icon-instagram"></i></a>
+                        <a href="#" class="social-icon social-youtube" title="Youtube" target="_blank"><i
+                                class="icon-youtube"></i></a>
+                        <a href="#" class="social-icon social-pinterest" title="Pinterest" target="_blank"><i
+                                class="icon-pinterest"></i></a>
+                    </div><!-- End .soial-icons -->
+                </div><!-- End .container-fluid -->
+            </div><!-- End .footer-bottom -->
+        </footer><!-- End .footer -->
+    </div><!-- End .page-wrapper -->
+
+    <div id="loader">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+
+    {{> website/base/mobile-menu}}
+
+    <div id="snackbar">Some text some message..</div>
+
+    {{> website/base/loginandsignup-modal }}
+
+    {{!-- <div class="container newsletter-popup-container mfp-hide" id="newsletter-popup-form">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="row no-gutters bg-white newsletter-popup-content">
+                    <div class="col-xl-3-5col col-lg-7 banner-content-wrap">
+                        <div class="banner-content text-center">
+                            <img src="/home/assets/images/popup/newsletter/logo.png" class="logo" alt="logo" width="60"
+                                height="15">
+                            <h2 class="banner-title">get <span>25<light>%</light></span> off</h2>
+                            <p>Subscribe to the IQON eCommerce newsletter to receive timely updates from your favorite
+                                products.</p>
+                            <form action="#">
+                                <div class="input-group input-group-round">
+                                    <input type="email" class="form-control form-control-white"
+                                        placeholder="Your Email Address" aria-label="Email Adress" required>
+                                    <div class="input-group-append">
+                                        <button class="btn" type="submit"><span>go</span></button>
+                                    </div><!-- .End .input-group-append -->
+                                </div><!-- .End .input-group -->
+                            </form>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="register-policy-2" required>
+                                <label class="custom-control-label" for="register-policy-2">Do not show this popup
+                                    again</label>
+                            </div><!-- End .custom-checkbox -->
+                        </div>
+                    </div>
+                    <div class="col-xl-2-5col col-lg-5 ">
+                        <img src="/home/assets/images/popup/newsletter/img-1.jpg" class="newsletter-img"
+                            alt="newsletter">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+    <!-- Plugins JS File -->
+    {{!--
+    <script src="/home/assets/js/jquery.min.js"></script> --}}
+    <script src="/home/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/home/assets/js/jquery.hoverIntent.min.js"></script>
+    <script src="/home/assets/js/jquery.waypoints.min.js"></script>
+    <script src="/home/assets/js/superfish.min.js"></script>
+    <script src="/home/assets/js/bootstrap-input-spinner.js"></script>
+    <script src="/home/assets/js/owl.carousel.min.js"></script>
+    <script src="/home/assets/js/jquery.plugin.min.js"></script>
+    <script src="/home/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="/home/assets/js/jquery.countdown.min.js"></script>
+    <!-- Main JS File -->
+    <script src="/home/assets/js/main.js"></script>
+    <script src="/home/assets/js/demos/demo-7.js"></script>
+    <script src="/home/assets/js/jquery.elevateZoom.min.js"></script>
+    <script>
+        $('#loader').hide();
+        function showSnackBar(text, alertType) {
+            // Get the snackbar DIV
+            var x = document.getElementById("snackbar");
+            $('#snackbar').html(`<div class='rounded p-4 alert alert-${alertType}'>${text}</div>`);
+            // Add the "show" class to DIV
+            x.className = "show";
+
+            // After 3 seconds, remove the show class from DIV
+            setTimeout(function () { x.className = x.className.replace("show", ""); }, 5000);
+        }
+
+        $(document).ready(function () {
+            {{#if message }}
+            showSnackBar('{{message.text}}', '{{message.alertType}}');
+            {{/if}}
+        });
+
+        function addToCart(id, qty, size = null, color = null) {
+            $('#loader').show();
+            $.ajax({
+                type: "POST",
+                url: '/api/cart/add-to-cart',
+                data: {
+                    product: id,
+                    quantity: qty,
+                    size: size,
+                    color: color
+                },
+                success: function (response) {
+                    $('#loader').hide();
+                    showSnackBar(response.text, response.alertType);
+                    populateCartDropDown();
+                    
+                },
+            });
+        }
+
+        function removeFromCart(id) {
+            $('#loader').show();
+            $.ajax({
+                type: "POST",
+                url: '/api/cart/remove-item-from-cart',
+                data: {
+                    cart_item_id: id,
+                },
+                success: function (response) {
+                    $('#loader').hide();
+                    showSnackBar(response.text, response.alertType);
+                    populateCartDropDown();
+                },
+            });
+        }
+
+        function populateCartDropDown() {
+            $('#loader').show();
+            $("#cart-dropdown").load("/api/cart/get-cart-for-this-user");
+            $('#loader').hide();
+        }
+        populateCartDropDown();
+    </script>
+</body>
+
+</html>

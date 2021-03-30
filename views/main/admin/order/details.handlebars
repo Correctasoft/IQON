@@ -1,0 +1,133 @@
+<style>
+    .product-image {
+        height: 100px;
+        width: 100px;
+    }
+    .attribute{
+        color: gray;
+        font-size: 1em;
+    }
+    dt{
+        text-align: left !important;
+    }
+    .border-right{
+        border-right: 2px solid #ccc;
+    }
+</style>
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{title}}</h3>
+                        {{!-- <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div> --}}
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-lg-4 border-right">
+                                <h5><u>ORDER INFO</u></h5>
+                                <dl class="dl-horizontal">
+                                    <dt>Date : </dt>
+                                    <dd class="fixdate">{{order.Date}}</dd>
+                                    <dt>Number : </dt>
+                                    <dd>{{order.Number}}</dd>
+                                    <dt>Total : </dt>
+                                    <dd>&#2547; {{order.Total}}</dd>
+                                    <dt>Status : </dt>
+                                    <dd>{{order.Status}}</dd>
+                                    <dt>Note : </dt>
+                                    <dd>{{order.Note}}</dd>
+                                </dl>
+                            </div>
+                            <div class="col-lg-6 border-right">
+                                <h5><u>BILLING INFO</u></h5>
+                                <dl class="dl-horizontal">
+                                    <dt>Name : </dt>
+                                    <dd>{{order.CustomerName}}</dd>
+                                    <dt>Phone : </dt>
+                                    <dd>{{order.CustomerPhone}}</dd>
+                                    <dt>Address : </dt>
+                                    <dd>{{order.BillingAddress}}</dd>
+                                    <dt>Area : </dt>
+                                    <dd>{{order.BillingArea}}</dd>
+                                    <dt>City : </dt>
+                                    <dd>{{order.BillingCity}}</dd>
+                                </dl>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <h5>Chnage Status</h5>
+                                <form action="./../change-status" method="POST">
+                                    <div class="form-group">
+                                        <select class="form-control" name="status" id="status">
+                                            <option value="Pending">Pending</option>
+                                            <option value="Processing">Processing</option>
+                                            <option value="Delivered">Delivered</option>
+                                            <option value="Rejected">Rejected</option>
+                                        </select>
+                                    </div>
+                                    <input type="hidden" value="{{order._id}}" name="orderId">
+                                    <button type='submit' class="btn btn-primary pull-right">Change</button>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <div class="table-responsive mt-2">
+                            <table class="table table-responsive table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" colspan="2">Poduct</th>
+                                        <th class="text-right">Price</th>
+                                        <th class="text-center">Quantity</th>
+                                        <th class="text-right">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each items}}
+                                    <tr>
+                                        <td class="text-center">
+                                            <img class="product-image" src="{{Product.MainImage}}">
+                                            <br><br>
+                                            Code: {{Product.Code}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{Product.Name}} <br>
+
+                                            {{#if Color}}
+                                            <br><span class="attribute">Color: {{Color}}</span>
+                                            {{/if}}
+                                            {{#if Size}}
+                                            <br><span class="attribute">Size: {{Size}}</span>
+                                            {{/if}}
+                                        </td>
+                                        <td class="text-right">&#2547; {{Price}}</td>
+                                        <td class="text-center">{{Quantity}}</td>
+                                        <td class="text-right">&#2547; {{Total}}</td>
+                                    </tr>
+                                    {{/each}}
+                                    <tr>
+                                        <td colspan="4" class="text-right">Total</td>
+                                        <td colspan="4" class="text-right">&#2547; {{order.Total}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div><!-- /.table-responsive -->
+                    </div><!-- /.box-body -->
+                    <div class="box-footer clearfix">
+
+                    </div><!-- /.box-footer -->
+                </div><!-- /.box -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+
+    </section><!-- /.content -->
+</div>
+<script>
+    $("#status").val("{{order.Status}}");
+</script>

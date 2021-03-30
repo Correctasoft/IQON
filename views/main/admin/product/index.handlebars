@@ -1,0 +1,180 @@
+<style>
+    .Product-image {
+        height: 50px;
+        width: 80px;
+    }
+
+    #ProductGrid_dialogEdit_wrapper {
+        width: 70% !important;
+    }
+
+    .e-grid .e-dialog>.e-dialog-scroller{
+        height: 31em !important;
+        width: auto !important;
+        overflow-y: scroll;
+    }
+</style>
+<script src="/richtextbox/jquery.richtext.min.js" type="text/javascript"> </script>
+<link href="/richtextbox/richtext.min.css" rel="stylesheet" type="text/css" />
+<script src="/view-js/admin/products-view.js" type="text/javascript"> </script>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            {{title}}
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="box box-info">
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <div class="row mx-0">
+                                <div id="ProductGrid"></div>
+                                <div id="ProductTemplate" style="display: none">
+                                    <b>Product</b>
+                                    <form class="form-inline" >
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <div class="p-3 ml-auto mr-auto col-md-6">
+                                                    <img class="img-thumbnail" style='height: 120px;width:200px'
+                                                        id='Product_image' src='\{{: MainImage }}' alt='\{{: Name }}'>
+                                                    <br>
+                                                    <small>1600px X 1600px</small><br>
+                                                    <div style="display: none;">
+                                                        <input type="file" class="custom-file-input" id="file-select"
+                                                            onchange="gertProduct_image()" lang="es">
+                                                        <input id="ProductImage" name="ProductImage"
+                                                            value="\{{: MainImage}}" class="form-control" type="text" />
+                                                    </div>
+                                                    <span class="btn btn-primary mt-2"
+                                                        onclick="document.getElementById('file-select').click();"
+                                                        for="customFile">Upload <i class="fa fa-upload"></i></span>
+                                                </div>
+                                                <div class="p-3 ml-auto mr-auto col-md-6">
+                                                    <img class="img-thumbnail" style='height: 120px;width:200px'
+                                                        id='Product_image1' src='\{{: SecondaryImage }}'
+                                                        alt='\{{: Name }}'>
+                                                    <br>
+                                                    <small>1600px X 1600px</small><br>
+                                                    <div style="display: none;">
+                                                        <input type="file" class="custom-file-input" id="file-select1"
+                                                            onchange="gertProduct_image1()" lang="es">
+                                                        <input id="ProductImage1" name="ProductImage1"
+                                                            value="\{{: SecondaryImage}}" class="form-control"
+                                                            type="text" />
+                                                    </div>
+                                                    <span class="btn btn-primary mt-2"
+                                                        onclick="document.getElementById('file-select1').click();"
+                                                        for="customFile">Upload <i class="fa fa-upload"></i></span>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group p-3 col-2 col-sm-2 col-md-2 col-lg-2">
+                                                <label for="ProductName">Name</label>
+                                                <input id="ProductName" name="ProductName" value="\{{: Name}}"
+                                                    class="form-control" placeholder="Name" />
+                                            </div>
+                                            <div class="form-group p-3 col-2 col-sm-2 col-md-2 col-lg-2">
+                                                <label for="ProductCode">Code</label>
+                                                <input id="ProductCode" name="ProductCode" value="\{{: Code}}"
+                                                    class="form-control" placeholder="Code" />
+                                            </div>
+                                            <div class="form-group p-3 col-2 col-sm-2 col-md-2 col-lg-2">
+                                                <label for="ProductSellingPrice">Discount Price</label>
+                                                <input id="ProductSellingPrice" type="number" name="ProductSellingPrice"
+                                                    value="\{{: SellingPrice}}" class="form-control"
+                                                    placeholder="SellingPrice" />
+                                            </div>
+                                            <div class="form-group p-3 col-2 col-sm-2 col-md-2 col-lg-2">
+                                                <label for="ProductDiscountedPrice">Actual Price</label>
+                                                <input id="ProductDiscountedPrice" type="number"
+                                                    name="ProductDiscountedPrice" value="\{{: DiscountedPrice}}"
+                                                    class="form-control" placeholder="DiscountedPrice" />
+                                            </div>
+
+                                            <div class="form-group p-3">
+                                                <label for="ProductCategory">Category</label>
+                                                <input type="text" id="ProductCategory" class="form-control"
+                                                    name="ProductCategory" />
+                                            </div>
+
+                                        </div>
+                                        {{!-- <div class="form-row">
+                                            <div class="form-group p-3">
+                                                <label for="ProductCategory">Category</label>
+                                                <input type="text" id="ProductCategory" class="form-control"
+                                                    name="ProductCategory" />
+                                            </div>
+                                        </div> --}}
+                                        <div class="form-row">
+                                            <div class="form-group p-3">
+                                                <textarea id="ProductDescription" name="ProductDescription"
+                                                    value="\{{: Description}}" rows="10"
+                                                    cols="95">\{{: Description}}</textarea>
+                                            </div>
+                                        </div>
+                                        {{!-- Size,Color,Tags box added by arafat --}}
+
+                                        <div class="form-group p-3 col-12 col-sm-12 col-md-12 col-lg-12">
+                                                <label for="ProductColor">Color</label>
+                                                <input id="ProductColor" name="ProductColor" value="\{{: Color}}"
+                                                    class="form-control" placeholder="Color" />
+                                        </div>
+
+                                        <div class="form-group p-3 col-12 col-sm-12 col-md-12 col-lg-12">
+                                                <label for="ProductSize">Size</label>
+                                                <input id="ProductSize" name="ProductSize" value="\{{: Size}}"
+                                                    class="form-control" placeholder="Size" />
+                                        </div>
+
+                                        <div class="form-group p-3 col-12 col-sm-12 col-md-12 col-lg-12">
+                                                <label for="ProductTags">Tags</label>
+                                                <input id="ProductTags" name="ProductTags" value="\{{: Tags}}"
+                                                    class="form-control" placeholder="Tags" />
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group p-3 text-center col-2 col-sm-2 col-md-2 col-lg-2">
+                                                <label>Stock Available</label>
+                                                <input type="checkbox" id="ProductStockAvailable"
+                                                    name="ProductStockAvailable" />
+                                            </div>
+                                            <div class="form-group p-3 text-center col-2 col-sm-2 col-md-2 col-lg-2">
+                                                <label>Active</label><br>
+                                                <input type="checkbox" id="ProductActive" name="ProductActive" />
+                                            </div>
+                                            <div class="form-group p-3 text-center col-2 col-sm-2 col-md-2 col-lg-2">
+                                                <label>Product Features</label>
+                                                <input type="checkbox" id="ProductFeatured" name="ProductFeatured" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <table cellspacing="10">
+                                        <tr style="display: none;">
+                                            <td style="text-align: right;">id
+                                            </td>
+                                            <td style="text-align: left">
+                                                <input id="ProductId" name="Product_id" value="\{{: _id}}"
+                                                    disabled="disabled" class="e-field e-ejinputtext valid e-disable"
+                                                    style="text-align: right; width: 116px; height: 28px" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div><!-- /.table-responsive -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+    </section><!-- /.content -->
+</div>
+
+<script>
+    
+</script>

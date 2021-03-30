@@ -1,0 +1,43 @@
+<form action="/customer/update-basic-info" method="POST">
+    <label>Name *</label>
+    <input name="Name" type="text" class="form-control" value="{{customer.Name}}" required>
+
+    <label>Street address *</label>
+    <textarea class="form-control" cols="10" rows="1" name="Address"
+        placeholder="House number and Street name">{{customer.Address}}</textarea>
+    <div class="row">
+        <div class="col-sm-4">
+            <label>Town / City *</label>
+            <input name="City" type="text" class="form-control" value="{{customer.City}}" required>
+        </div><!-- End .col-sm-6 -->
+        <div class="col-sm-4">
+            <label>Area *</label>
+            <input name="Area" type="text" class="form-control" value="{{customer.Area}}" required>
+        </div><!-- End .col-sm-6 -->
+        <div class="col-sm-4">
+            <label>Postcode / ZIP *</label>
+            <input name="Postcode" type="text" class="form-control" value="{{customer.Postalcode}}" required>
+        </div><!-- End .col-sm-6 -->
+    </div><!-- End .row -->
+    <div class="row">
+        <div class="col-sm-6">
+            <label>Email address *</label>
+            <input name="Email" type="email" class="form-control" value="{{customer.Email}}" required>
+        </div><!-- End .col-sm-6 -->
+
+        <div class="col-sm-6">
+            <label>Phone *</label>
+            <input name="Phone" type="tel" class="form-control" value="{{customer.Phone}}" required>
+        </div><!-- End .col-sm-6 -->
+    </div>
+
+    <label>password *</label>
+    <small class="ml-2">(Put your current password to update your info)</small>
+    <input name="Password" type="password" class="form-control mb-2" required>
+
+    <small>Once you update your info, you will require to login</small><br>
+    <button type="submit" class="btn btn-outline-primary-2">
+        <span>SAVE CHANGES</span>
+        <i class="icon-long-arrow-right"></i>
+    </button>
+</form>

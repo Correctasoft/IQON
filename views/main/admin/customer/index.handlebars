@@ -1,0 +1,85 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            {{title}}
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Info boxes -->
+        {{#if message}}
+        <div class="row">
+            <div class="col-md-12 col-sm-12 mx-auto">
+                <div class="alert alert-{{message.alert_type}} text-center"> {{message.message}}</div>        
+            </div>
+        </div>
+        {{/if}}
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <a target="_blank" href="/admin/api/customers" class="btn btn-outline-primary mb-4 mr-2 pull-right"><i class="fa fa-download"> Export to Excel</i></a>
+            </div>
+        </div><!-- /.row -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="box box-info">
+
+                    <div class="box-header with-border">
+                        <div class="input-group custom-searchbar">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            <input class="form-control" onkeyup="searchInTable(this, 'customertable')" id="myInput" type="text" width="100%" placeholder="search...">
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table class="table no-margin">
+                                <thead>
+                                    <tr>
+                                        <th>Account Opening Date</th>
+                                        <th>Name</th>
+                                        <th>Phone</th>
+                                        <th>Email</th>
+                                        <th>Number of Orders</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="customertable">
+                                    {{#each customerList}}
+                                        <tr>
+                                            <td class="fixdate">{{InsertionDate}}</td>
+                                            <td>{{Name}}</td>
+                                            <td>{{Phone}}</td>
+                                            <td>{{Email}}</td>
+                                            <td>{{NumberOfOrders}}</td>
+                                        </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div><!-- /.table-responsive -->
+                    </div><!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        {{!-- <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+                        <a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a> --}}
+                    </div><!-- /.box-footer -->
+                </div><!-- /.box -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </section><!-- /.content -->
+</div>
+
+<!-- hiddend form form for delte -->
+<div style="display:none"> 
+    <form action="/customer/delete" method="POST">
+        <input type="text" value="" id="customer-to-be-deleted" name="customer_id">
+        <button type="submit" id="customer-delete-button" >btn</button>
+    </form>
+</div>
+
+<script>
+    function deleteCustomer(id){
+        $('#customer-to-be-deleted').val(id);
+        $('#customer-delete-button').click();
+    }
+</script>
