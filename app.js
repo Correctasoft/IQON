@@ -202,7 +202,7 @@ app.post('/logout', (req, res) => {
   res.send("Logout successful");
 });
 
-app.listen(process.env.PORT || 80, () => {
+app.listen(process.env.PORT || 8080, () => {
   console.log(`listenning on port `, process.env.PORT || 8080);
 });
 
