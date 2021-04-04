@@ -14,6 +14,7 @@ $(function () {
     isResponsive: true,
     filterSettings: { filterType: "menu" },
     allowScrolling: true,
+    pageSettings: { pageSize: 6},
     scrollSettings: { height: ($(window).height() - ($(window).height() * ((37 * $(window).height()) / 937) / 100)) },
     enableResponsiveRow: false,
     editSettings: {

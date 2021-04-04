@@ -15,22 +15,140 @@ router.all("/*", (req, res, next) => {
 });
 
 router.get("/", (req, res) => {
-  ProductModel.find({
-    IsDelete: false
-  }).
-  populate({
-      path: 'Category',
-      model: CategoryModel
-    })
-    .then((products) => {
-      res.json({
-        Items: products,
-        Count: products.length,
+  var substring = "";
+  if (req.query.$filter) {
+    substring = req.query.$filter.split("'")[1];
+  }
+  if (Object.keys(req.query).length === 0) {
+    ProductModel.find({
+      IsDelete: false,
+      $or: [{
+        Code: {
+          $regex: `${substring}`,
+          $options: "i",
+        },
+        Name: {
+          $regex: `${substring}`,
+          $options: "i",
+        }
+      }, ],
+    }).
+    populate({
+        path: 'Category',
+        model: CategoryModel
+      })
+      .then((products) => {
+        res.json({
+          Items: products,
+          Count: products.length,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  } else {
+    if (Object.keys(req.query).includes("$orderby")) {
+      let sortingParameters = [];
+      sortingParameters = req.query.$orderby.split(" ");
+      ProductModel.count({
+          IsDelete: false,
+          $or: [{
+            Code: {
+              $regex: ".*" + substring + ".*",
+              $options: "i",
+            },
+            Name: {
+              $regex: ".*" + substring + ".*",
+              $options: "i",
+            }
+          }, ],
+        },
+        function (err, count) {
+          if (err) {
+            console.log(err);
+          } else {
+            ProductModel.find({
+                IsDelete: false,
+                $or: [{
+                  Code: {
+                    $regex: ".*" + substring + ".*",
+                    $options: "i",
+                  },
+                  Name: {
+                    $regex: ".*" + substring + ".*",
+                    $options: "i",
+                  }
+                }, ],
+              }).sort([
+                [sortingParameters[0], getOrdering(sortingParameters[1])]
+              ])
+              .limit(parseInt(req.query.$top))
+              .skip(parseInt(req.query.$skip))
+              .populate({
+                path: 'Category',
+                model: CategoryModel
+              })
+              .then((products) => {
+                res.json({
+                  Items: products,
+                  Count: products.length,
+                });
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          }
+        });
+    } else {
+      ProductModel.count({
+          IsDelete: false,
+          $or: [{
+            Code: {
+              $regex: ".*" + substring + ".*",
+              $options: "i",
+            },
+            Name: {
+              $regex: ".*" + substring + ".*",
+              $options: "i",
+            }
+          }, ],
+        },
+        function (err, count) {
+          if (err) {
+            console.log(err);
+          } else {
+            ProductModel.find({
+                IsDelete: false,
+                $or: [{
+                  Code: {
+                    $regex: ".*" + substring + ".*",
+                    $options: "i",
+                  },
+                  Name: {
+                    $regex: ".*" + substring + ".*",
+                    $options: "i",
+                  }
+                }, ],
+              })
+              .limit(parseInt(req.query.$top))
+              .skip(parseInt(req.query.$skip))
+              .populate({
+                path: 'Category',
+                model: CategoryModel
+              })
+              .then((products) => {
+                res.json({
+                  Items: products,
+                  Count: products.length,
+                });
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          }
+        });
+    }
+  }
 });
 
 router.put("/", (req, res) => {
@@ -93,7 +211,7 @@ router.post("/", async (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  
+
   ProductModel.updateOne({
       _id: req.params.id
     }, {
