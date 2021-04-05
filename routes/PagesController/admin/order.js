@@ -6,8 +6,9 @@ const salesOrderModel =  require('../../../models/SalesOrder');
 const {
   multipleMongooseToObj, mongooseToObj
 } = require("../../../helpers/mongoobjecthelper");
+const { userAuthentication } = require("../../../helpers/authentication");
 
-router.get('/', async (req, res) => {
+router.get('/',userAuthentication, async (req, res) => {
     let orders =  multipleMongooseToObj(await salesOrderModel.find({}).sort({Date: -1}));
     return res.render('main/admin/order', {
         layout: 'admin/base',
