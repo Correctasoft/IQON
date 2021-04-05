@@ -65,6 +65,7 @@ $(function () {
     isResponsive: true,
     filterSettings: { filterType: "menu" },
     enableResponsiveRow: false,
+    pageSettings: { pageSize: 6},
     editSettings: {
       allowEditing: true,
       allowAdding: true,
