@@ -5,6 +5,7 @@ const ProductModel = require("../../../models/Product");
 const ImageModel = require("../../../models/Image");
 const fs = require('fs');
 const store = require('../../../middleware/multer');
+const Jimp = require('jimp');
 
 const {
   multipleMongooseToObj
@@ -100,7 +101,12 @@ router.post("/:id",store.array('images', 12)  , async (req, res, next) => {
     error.httpStatusCode = 400;
     return next(error)
   }
-
+  files.map(async file => {
+    const image = await Jimp.read(file.path);
+    await image.resize(800, 800);
+    await image.quality(70);
+    await image.writeAsync(file.path);
+  })
   // convert images into base64 encoding
   let imgArray = files.map((file) => {
     let img = fs.readFileSync(file.path)
