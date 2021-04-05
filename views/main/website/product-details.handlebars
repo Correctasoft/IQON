@@ -9,10 +9,10 @@
     }
 </style>
 <main class="main">
-    <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
+    {{!-- <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
         <div class="container d-flex align-items-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="i">Home</a></li>
                 <li class="breadcrumb-item"><a href="#">Products</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Default</li>
             </ol>
@@ -29,7 +29,7 @@
                 </a>
             </nav><!-- End .pager-nav -->
         </div><!-- End .container -->
-    </nav><!-- End .breadcrumb-nav -->
+    </nav><!-- End .breadcrumb-nav --> --}}
 
     <div class="page-content">
         <div class="container">
@@ -52,20 +52,20 @@
                                     <a class="product-gallery-item active" href="#"
                                         data-image="{{product.MainImage}}"
                                         data-zoom-image="{{product.MainImage}}">
-                                        <img src="{{product.MainImage}}" alt="product side">
+                                        <img src="{{product.MainImage}}" alt="{{product.Name}} Mian Image">
                                     </a>
 
                                     <a class="product-gallery-item" href="#"
                                         data-image="{{product.SecondaryImage}}"
                                         data-zoom-image="{{product.SecondaryImage}}">
-                                        <img src="{{product.SecondaryImage}}" alt="product cross">
+                                        <img src="{{product.SecondaryImage}}" alt="{{product.Name}} Secoundary Image">
                                     </a>
 
                                     {{#each product.images}}
                                     <a class="product-gallery-item" href="#"
                                         data-image="data:{{Type}};base64,{{Content}}"
                                         data-zoom-image="data:{{Type}};base64,{{Content}}">
-                                        <img src="data:{{Type}};base64,{{Content}}" alt="product with model">
+                                        <img src="data:{{Type}};base64,{{Content}}" alt="{{product.Name}} Other Image">
                                     </a>
                                     {{/each}}
                                     
@@ -176,7 +176,7 @@
                                     <a href="/shop/category/{{product.Category.Slug}}">{{product.Category.Name}}</a>
                                 </div><!-- End .product-cat -->
 
-                                <div class="social-icons social-icons-sm">
+                                {{!-- <div class="social-icons social-icons-sm">
                                     <span class="social-label">Share:</span>
                                     <a href="#" class="social-icon" title="Facebook" target="_blank"><i
                                             class="icon-facebook-f"></i></a>
@@ -186,7 +186,7 @@
                                             class="icon-instagram"></i></a>
                                     <a href="#" class="social-icon" title="Pinterest" target="_blank"><i
                                             class="icon-pinterest"></i></a>
-                                </div>
+                                </div> --}}
                             </div><!-- End .product-details-footer -->
                         </div><!-- End .product-details -->
                         </form>
@@ -201,10 +201,10 @@
                         <a class="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab"
                             role="tab" aria-controls="product-desc-tab" aria-selected="true">Description</a>
                     </li>
-                    <li class="nav-item">
+                    {{!-- <li class="nav-item">
                         <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab"
                             aria-controls="product-info-tab" aria-selected="false">Additional information</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" id="product-shipping-link" data-toggle="tab" href="#product-shipping-tab"
                             role="tab" aria-controls="product-shipping-tab" aria-selected="false">Shipping & Returns</a>
