@@ -93,7 +93,7 @@ router.get("/", (req, res) => {
               .then((products) => {
                 res.json({
                   Items: products,
-                  Count: products.length,
+                  Count: count,
                 });
               })
               .catch((err) => {
@@ -141,7 +141,7 @@ router.get("/", (req, res) => {
               .then((products) => {
                 res.json({
                   Items: products,
-                  Count: products.length,
+                  Count: count,
                 });
               })
               .catch((err) => {
