@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const methodOverrride = require("method-override");
 const { mongoDbUrl } = require("./config/database");
 const session = require('express-session');
+const compression = require("compression");
 
 const refreshTokens = [];
 
@@ -63,7 +64,7 @@ app.engine(
 app.set("view engine", "handlebars");
 
 //Upload middleware
-
+app.use(compression());
 //bodye parser
 app.use(
   bodyParser.urlencoded({
