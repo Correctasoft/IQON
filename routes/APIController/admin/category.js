@@ -136,4 +136,22 @@ router.get('/parent-categories', (req, res) => {
     });
 });
 
+router.get('/mini-categories', (req, res) => {
+  CategoryModel.find({
+      IsDelete: false
+    }).select({
+      "Name": 1,
+      "_id": 1
+    })
+    .then((categories) => {
+      res.json({
+        Items: categories,
+        Count: categories.length,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 module.exports = router;
