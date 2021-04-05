@@ -294,4 +294,23 @@ router.get('/parent-categories', (req, res) => {
     });
 });
 
+router.get('/mini-products', (req, res) => {
+    ProductModel.find({
+      IsDelete: false
+    }).select({
+      "Name": 1,
+      "Code": 1,
+      "_id": 1
+    })
+    .then((products) => {
+      res.json({
+        Items: products,
+        Count: products.length,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 module.exports = router;

@@ -8,7 +8,7 @@ const productModel =  require('../../../models/Product');
 const { multipleMongooseToObj, mongooseToObj } = require("../../../helpers/mongoobjecthelper");
 const { userAuthentication } = require("../../../helpers/authentication");
 
-router.get('/', async (req, res) => {
+router.get('/', userAuthentication, async (req, res) => {
     let orders =  multipleMongooseToObj(await salesOrderModel.find({
         Date:{
             $gte: new Date().setHours(0,0,0,0),

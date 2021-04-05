@@ -33,7 +33,7 @@ let populateParentProductDropDown = function (data) {
 
 let getCategories = function () {
   $.ajax({
-    url: "/admin/api/categories/",
+    url: "/admin/api/categories/mini-categories",
     type: "GET",
     success: function (data) {
       global_Product_data = data;
