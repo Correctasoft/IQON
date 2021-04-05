@@ -1,7 +1,7 @@
 window.onload = function () {
   console.log("file loaded");
   $.ajax({
-    url: '/admin/api/products',
+    url: '/admin/api/products/mini-products',
     type: 'GET',
     beforeSend: function (xhr) { //Include the bearer token in header
       xhr.setRequestHeader("Authorization", 'Bearer ' + getToken());
