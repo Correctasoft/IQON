@@ -4,8 +4,7 @@ const bannerModel =  require('../../../models/Banner');
 const categoryModel =  require('../../../models/Category');
 const productModel =  require('../../../models/Product');
 const { multipleMongooseToObj, mongooseToObj } = require("../../../helpers/mongoobjecthelper");
-const { getLoggedInCustomer, requireCustomerLogin } = require('../../../middleware/web');
-
+const { getCommonData ,getLoggedInCustomer, requireCustomerLogin } = require('../../../middleware/web');
 function getErrorMessage(req){
     if (req.session) {
         if(req.session.message){
@@ -81,6 +80,12 @@ router.get('/', getLoggedInCustomer, async (req, res) => {
     });
 });
 
+router.get('/about', getCommonData, (req, res)=>{
+    return res.render('main/website/about', {
+        layout: 'website/base',
+        title: 'About',
+    });
+});
 
 router.get('/error', (req, res)=>{
     return res.render('main/website/error', {

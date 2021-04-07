@@ -218,7 +218,7 @@
             <a href="/shop">Shop</a>
         </li>
         <li>
-            <a href="category.html" class="sf-with-ul">Category</a>
+            <a href="#" class="sf-with-ul">Category</a>
 
             <div class="megamenu megamenu-md">
                 <div class="row no-gutters">
@@ -260,6 +260,31 @@
                 </div><!-- End .row -->
             </div><!-- End .megamenu megamenu-md -->
         </li>
+        {{#each categoriesFroMenu}}
+        <li>
+            <a href="#" class="sf-with-ul">{{Name}}</a>
+
+            <div class="megamenu megamenu-md">
+                <div class="row no-gutters">
+                    <div class="col-md-8">
+                        <div class="menu-col">
+                            <div class="row">      
+                                    <!-- End .menu-title -->
+                                    {{#if children}}
+                                    <ul>
+                                        {{#each children}}
+                                        <li><a href="/shop/category/{{Slug}}">{{Name}}</a></li>
+                                        {{/each}}
+                                    </ul>
+                                    {{/if}}
+                            </div><!-- End .row -->
+                        </div><!-- End .menu-col -->
+                    </div><!-- End .col-md-8 -->
+                </div><!-- End .row -->
+            </div><!-- End .megamenu megamenu-md -->
+        </li>
+        {{/each}}
+        
         {{!-- <li>
             <a href="product.html" class="sf-with-ul">Product</a>
 

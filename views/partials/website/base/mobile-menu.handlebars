@@ -1,82 +1,98 @@
- <!-- Mobile Menu -->
-    <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
+<!-- Mobile Menu -->
+<div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
 
-    <div class="mobile-menu-container">
-        <div class="mobile-menu-wrapper">
-            <span class="mobile-menu-close"><i class="icon-close"></i></span>
+<div class="mobile-menu-container">
+    <div class="mobile-menu-wrapper">
+        <span class="mobile-menu-close"><i class="icon-close"></i></span>
 
-            <form action="#" method="get" class="mobile-search">
-                <label for="mobile-search" class="sr-only">Search</label>
-                <input type="search" class="form-control" name="mobile-search" id="mobile-search"
-                    placeholder="Search in..." required>
-                <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-            </form>
+        <form action="/shop/search"method="get" class="mobile-search">
+            <label for="mobile-search" class="sr-only">Search</label>
+            <input type="search" class="form-control" name="query" id="mobile-search" placeholder="Search in..."
+                required>
+            <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+        </form>
 
-            <nav class="mobile-nav">
-                <ul class="mobile-menu">
-                    <li> <a href="/">Home</a></li>
-                    <li> <a href="/shop">Shop</a></li>
-                    
-                    
-                    {{!-- <li>
-                        <a href="#">Pages</a>
-                        <ul>
-                            <li>
-                                <a href="about.html">About</a>
+        <nav class="mobile-nav">
+            <ul class="mobile-menu">
+                <li> <a href="/">Home</a></li>
+                <li> <a href="/shop">Shop</a></li>
 
-                                <ul>
-                                    <li><a href="about.html">About 01</a></li>
-                                    <li><a href="about-2.html">About 02</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="contact.html">Contact</a>
 
-                                <ul>
-                                    <li><a href="contact.html">Contact 01</a></li>
-                                    <li><a href="contact-2.html">Contact 02</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="faq.html">FAQs</a></li>
-                            <li><a href="404.html">Error 404</a></li>
-                            <li><a href="coming-soon.html">Coming Soon</a></li>
-                        </ul>
-                    </li> --}}
-                    <li>
-                        <a href="/shop">Category</a>
+                {{!-- <li>
+                    <a href="#">Pages</a>
+                    <ul>
+                        <li>
+                            <a href="about.html">About</a>
 
-                        <ul>
-                            {{#each categoriesFroMenu}}
-                            <li>
-                                <a href="/shop/category/{{Slug}}">{{Name}}</a>
-                                <ul>
-                                    {{#each children}}
-                                    <li><a href="/shop/category/{{Slug}}">{{Name}}</a></li>
-                                    {{/each}}
-                                </ul>
-                            </li>
-                            {{/each}}
-                        </ul>
-                    </li>
-                    {{#if user}}
-                    <li> 
-                        <a href="#">{{user.Name}}</a>
+                            <ul>
+                                <li><a href="about.html">About 01</a></li>
+                                <li><a href="about-2.html">About 02</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="contact.html">Contact</a>
 
-                        <ul>
-                            <li><a href="/customer/my-account">My Account</a></li>
-                            <li><a href="/auth/logout">Logout</a></li>
-                        </ul>
-                    </li>
-                    {{/if}}
-                </ul>
-            </nav><!-- End .mobile-nav -->
+                            <ul>
+                                <li><a href="contact.html">Contact 01</a></li>
+                                <li><a href="contact-2.html">Contact 02</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="404.html">Error 404</a></li>
+                        <li><a href="coming-soon.html">Coming Soon</a></li>
+                    </ul>
+                </li> --}}
+                <li>
+                    <a href="/shop">Category</a>
 
-            <div class="social-icons">
-                <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
-                <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
-            </div><!-- End .social-icons -->
-        </div><!-- End .mobile-menu-wrapper -->
-    </div><!-- End .mobile-menu-container -->
+                    <ul>
+                        {{#each categoriesFroMenu}}
+                        <li>
+                            <a href="/shop/category/{{Slug}}">{{Name}}</a>
+                            <ul>
+                                {{#each children}}
+                                <li><a href="/shop/category/{{Slug}}">{{Name}}</a></li>
+                                {{/each}}
+                            </ul>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </li>
+                {{#if user}}
+                <li>
+                    <a href="#">{{user.Name}}</a>
+
+                    <ul>
+                        <li><a href="/customer/my-account">My Account</a></li>
+                        <li><a href="/auth/logout">Logout</a></li>
+                    </ul>
+                </li>
+                {{else}}
+                <li>
+                    <a style='color:white' onclick="showLogin()"><span>SIGN UP / LOG IN</span></a>
+                </li>
+
+                {{/if}}
+            </ul>
+        </nav><!-- End .mobile-nav -->
+
+        <div class="social-icons">
+            <a href="https://www.facebook.com/iqon2020" class="social-icon" target="_blank" title="Facebook"><i
+                    class="icon-facebook-f"></i></a>
+            {{!-- <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a> --}}
+            <a href="https://www.instagram.com/iqon.official/?hl=en" class="social-icon" target="_blank"
+                title="Instagram"><i class="icon-instagram"></i></a>
+            {{!-- <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a> --}}
+        </div><!-- End .social-icons -->
+    </div><!-- End .mobile-menu-wrapper -->
+</div><!-- End .mobile-menu-container -->
+
+<script>
+    function showLogin(){
+        $('.mobile-menu-close')[0].click();
+        setTimeout(function(){
+            $('#signup-button').click();
+        },200);
+    }
+</script>

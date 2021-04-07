@@ -41,6 +41,20 @@
         .product-action-vertical {
             display: none;
         }
+        .megamenu{
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2) !important;
+        }
+        .header-7 .top-menu:not(.top-link-menu) ul {
+            min-width: 220px;
+        }
+
+        @media screen and (max-width: 991px){
+            .header-middle .header-center {
+                display: block;
+                margin-right: 0;
+            }
+        }
+        
 
         {{!-- fb and google login hide --}}
 
@@ -220,15 +234,15 @@
                             <li>
                                 <a href="#">Links</a>
                                 <ul>
-                                    <li><a href="tel:#"><i class="icon-phone"></i>Call: +88 0173 2239567</a></li>
+                                    <li><a class="mb-1" href="tel:#"><i class="icon-phone"></i>Call: +88 0173 2239567</a></li>
                                     {{!-- <li><a href="wishlist.html"><i class="icon-heart-o"></i>My Wishlist
                                             <span>(3)</span></a></li> --}}
-                                    <li><a href="/about">About Us</a></li>
+                                    <li><a class="mb-1" href="/about">About Us</a></li>
                                     {{#if user}}
-                                    <li><a href="/auth/logout">Logout</a></li>
+                                        <li><a class="mb-1" href="/auth/logout">Logout</a></li>
                                     {{else}}
-                                    <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a>
-                                        {{/if}}
+                                        <li><a class="mb-1" href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a>
+                                    {{/if}}
                                     </li>
                                 </ul>
                             </li>
@@ -259,7 +273,7 @@
                                 height="30">
                         </a>
                     </div><!-- End .header-left -->
-                    <div class="header-right" style="margin-left: 0;">
+                    <div class="header-right">
                         <div class="header-search header-search-extended header-search-visible">
                             <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
                             <form action="/shop/search" method="get">
@@ -395,7 +409,7 @@
 
             <div class="footer-bottom">
                 <div class="container-fluid">
-                    <p class="footer-copyright">Copyright © 2019 IQON Store. All Rights Reserved.</p>
+                    <p class="footer-copyright">Copyright © 2021 IQON Store. All Rights Reserved.</p>
                     <!-- End .footer-copyright -->
                     <ul class="footer-menu">
                         <li><a href="#">Terms Of Use</a></li>
@@ -406,10 +420,11 @@
                         <span class="social-label">Social Media</span>
                         <a href="https://www.facebook.com/iqon2020" target="_blank" class="social-icon social-facebook" title="Facebook" target="_blank"><i
                                 class="icon-facebook-f"></i></a>
+                        
+                        <a href="https://www.instagram.com/iqon.official/?hl=en" class="social-icon social-instagram" title="Instagram" target="_blank"><i
+                                class="icon-instagram"></i></a>
                         {{!-- <a href="#" class="social-icon social-twitter" title="Twitter" target="_blank"><i
                                 class="icon-twitter"></i></a>
-                        <a href="#" class="social-icon social-instagram" title="Instagram" target="_blank"><i
-                                class="icon-instagram"></i></a>
                         <a href="#" class="social-icon social-youtube" title="Youtube" target="_blank"><i
                                 class="icon-youtube"></i></a>
                         <a href="#" class="social-icon social-pinterest" title="Pinterest" target="_blank"><i
