@@ -27,8 +27,11 @@
                     </div><!-- End .product-action-vertical -->
 
                     <div class="product-action">
-                        <a onclick="addToCart('{{_id}}', 1)" class="btn-product btn-cart"><span>add
-                                to cart</span></a>
+                        {{#ifCond Size '||' Color}}
+                        <a href="/product/{{Slug}}?msg=1" class="btn-product btn-cart"><span>add to cart</span></a>
+                        {{else}}
+                        <a onclick="addToCart('{{_id}}', 1)" class="btn-product btn-cart"><span>add to cart</span></a>
+                        {{/ifCond}}
                     </div><!-- End .product-action -->
                 </figure><!-- End .product-media -->
 
