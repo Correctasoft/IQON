@@ -65,7 +65,6 @@ router.post("/delete", (req, res) => {
 
 
 router.put("/", (req, res) => {
-  console.log(req.body);
   ProductModel.updateOne({
       _id: req.body.Product_id,
     }, {

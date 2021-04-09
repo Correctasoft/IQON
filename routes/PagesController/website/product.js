@@ -94,7 +94,7 @@ router.post('/review',requireCustomerLogin, getLoggedInCustomer, async (req, res
     newReview
     .save()
     .then((savedData) => {
-        console.log(savedData);
+        
         res.redirect("/product/"+req.body.slug);
     });
 });

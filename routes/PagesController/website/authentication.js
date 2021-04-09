@@ -54,7 +54,7 @@ router.post('/login', async (req, res) => {
 
 router.post('/regsiter', async (req, res) => {
     let check = await customerModel.find({ $or:[ {Email: req.body.Email }, {Phone :req.body.Phone}] });
-    console.log(check);
+    
     if (check.length > 0) {
         //this user already exists
         req.session.message= {

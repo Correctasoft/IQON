@@ -18,8 +18,6 @@ router.post('/login', async (req, res) => {
                     res.redirect('/admin/auth/login');
                 }
                 if (matched) {
-                    console.log(user);
-                    console.log(accessTokenSecret);
                     //create session
                     let userObj = {
                         _id: user._id,
@@ -33,7 +31,7 @@ router.post('/login', async (req, res) => {
                     userObj.accessToken = jwt.sign({ Email: userObj.Email, Name: userObj.Name }, accessTokenSecret, { expiresIn: '30m' });
                     
                     req.session.loggedInUser= userObj;
-                    console.log(userObj);
+                    
                     req.session.message= {
                         text: "Hello "+user.Name,
                         alertType: 'success'
@@ -60,7 +58,7 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/register', async (req, res) => {
-    console.log(req.body);
+    
     let check = await userModel.find({ $or:[ {Email: req.body.Email }, {Phone :req.body.Phone}] });
     
     if (check.length > 0) {

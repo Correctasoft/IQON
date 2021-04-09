@@ -266,14 +266,16 @@
 
             <div class="megamenu megamenu-md">
                 <div class="row no-gutters">
-                    <div class="col-md-8">
+                    <div class="col-md-10">
                         <div class="menu-col">
                             <div class="row">      
                                     <!-- End .menu-title -->
                                     {{#if children}}
-                                    <ul>
+                                    <ul style="column-count: 3">
                                         {{#each children}}
-                                        <li><a href="/shop/category/{{Slug}}">{{Name}}</a></li>
+                                        
+                                            <li><a href="/shop/category/{{Slug}}">{{Name}}</a></li>
+                                        
                                         {{/each}}
                                     </ul>
                                     {{/if}}

@@ -127,7 +127,7 @@ router.post('/change-password', requireCustomerLogin, async (req, res) => {
 
 router.get('/order/details/:orderId', getCommonData, requireCustomerLogin, async (req, res) => {
     let order = await salesOrderModel.findOne({_id : req.params.orderId});
-    console.log(req.session.loggedInCustomer._id, order.Customer);
+    
     if(order.Customer != req.session.loggedInCustomer._id){
         req.session.message= {
             text: "You are not allowed",

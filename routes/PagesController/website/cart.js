@@ -17,7 +17,7 @@ function getTheLoggedInCustomer(req){
 
 async function updateCartValues(cart_id){
     let cartItems =  await cartItemModel.find({Cart: cart_id});
-    console.log(cartItems.length, cart_id);
+    
     let totalQty=0, totalAmount =0;
     for(let i=0; i<cartItems.length; i++){
         totalQty+= cartItems[i].Quantity;

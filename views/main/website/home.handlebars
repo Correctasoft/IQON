@@ -324,8 +324,8 @@
                 aria-labelledby="new-women-link">
                 <div class="products">
                     <div class="row justify-content-center">
+                        {{#each newArivalWomen}}
                         <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
-                            {{#each newArivalWomen}}
                             <div class="product product-7 text-center">
                                 
                                 <figure class="product-media">
@@ -369,8 +369,9 @@
                                     </div><!-- End .rating-container --> --}}
                                 </div><!-- End .product-body -->
                             </div><!-- End .product -->
-                            {{/each}}
-                        </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+                        </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->    
+                        {{/each}}
+                        
                     </div><!-- End .row -->
                 </div><!-- End .products -->
             </div><!-- .End .tab-pane -->
