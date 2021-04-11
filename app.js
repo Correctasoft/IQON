@@ -107,6 +107,7 @@ const product = require("./routes/PagesController/admin/product");
 const productimages = require("./routes/PagesController/admin/productimages");
 const customer = require("./routes/PagesController/admin/customer");
 const order = require("./routes/PagesController/admin/order");
+const review = require("./routes/PagesController/admin/review");
 const auth = require("./routes/PagesController/admin/authentication");
 
 //admin api routes
@@ -116,6 +117,7 @@ const productAPI = require("./routes/APIController/admin/product");
 const productImagesAPI = require("./routes/APIController/admin/productimages");
 const customerAPI = require("./routes/APIController/admin/customer");
 const orderAPI = require("./routes/APIController/admin/order");
+const reviewAPI = require("./routes/APIController/admin/review");
 
 //website routes
 app.use('/', home);
@@ -140,6 +142,7 @@ app.use('/admin/product', product);
 app.use('/admin/productimages', productimages);
 app.use('/admin/customer', customer);
 app.use('/admin/order', order);
+app.use('/admin/review', review);
 app.use('/admin/auth', auth);
 
 
@@ -149,6 +152,7 @@ app.use('/admin/api/products', productAPI);
 app.use('/admin/api/productimages', productImagesAPI);
 app.use('/admin/api/customers', customerAPI);
 app.use('/admin/api/orders', orderAPI);
+app.use('/admin/api/reviews', reviewAPI);
 
 
 app.post('/login', (req, res) => {

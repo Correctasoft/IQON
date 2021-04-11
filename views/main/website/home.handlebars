@@ -62,47 +62,47 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-12 icon-boxes">
-                            <div class="col-sm-6 col-lg-4">
-                    <div class="icon-box icon-box-side">
-                        <span class="icon-box-icon">
-                            <i class="icon-truck"></i>
-                        </span>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="icon-box icon-box-side">
+                            <span class="icon-box-icon">
+                                <i class="icon-truck"></i>
+                            </span>
 
-                        <div class="icon-box-content">
-                            <h3 class="icon-box-title">Payment & Delivery</h3><!-- End .icon-box-title -->
-                            <p>Free shipping for orders over $50</p>
-                        </div><!-- End .icon-box-content -->
-                    </div><!-- End .icon-box -->
-                </div><!-- End .col-sm-6 col-lg-4 -->
+                            <div class="icon-box-content">
+                                <h3 class="icon-box-title">Payment & Delivery</h3><!-- End .icon-box-title -->
+                                <p>Free shipping for orders over $50</p>
+                            </div><!-- End .icon-box-content -->
+                        </div><!-- End .icon-box -->
+                    </div><!-- End .col-sm-6 col-lg-4 -->
 
-                <div class="col-sm-6 col-lg-4">
-                    <div class="icon-box icon-box-side">
-                        <span class="icon-box-icon">
-                            <i class="icon-rotate-left"></i>
-                        </span>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="icon-box icon-box-side">
+                            <span class="icon-box-icon">
+                                <i class="icon-rotate-left"></i>
+                            </span>
 
-                        <div class="icon-box-content">
-                            <h3 class="icon-box-title">Return & Refund</h3><!-- End .icon-box-title -->
-                            <p>Free 100% money back guarantee</p>
-                        </div><!-- End .icon-box-content -->
-                    </div><!-- End .icon-box -->
-                </div><!-- End .col-sm-6 col-lg-4 -->
+                            <div class="icon-box-content">
+                                <h3 class="icon-box-title">Return & Refund</h3><!-- End .icon-box-title -->
+                                <p>Free 100% money back guarantee</p>
+                            </div><!-- End .icon-box-content -->
+                        </div><!-- End .icon-box -->
+                    </div><!-- End .col-sm-6 col-lg-4 -->
 
-                <div class="col-sm-6 col-lg-4">
-                    <div class="icon-box icon-box-side">
-                        <span class="icon-box-icon">
-                            <i class="icon-headphones"></i>
-                        </span>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="icon-box icon-box-side">
+                            <span class="icon-box-icon">
+                                <i class="icon-headphones"></i>
+                            </span>
 
-                        <div class="icon-box-content">
-                            <h3 class="icon-box-title">Quality Support</h3><!-- End .icon-box-title -->
-                            <p>Alway online feedback 24/7</p>
-                        </div><!-- End .icon-box-content -->
-                    </div><!-- End .icon-box -->
-                </div><!-- End .col-sm-6 col-lg-4 -->
-            </div>
-        </div><!-- End .row -->
-    </div><!-- End .container -->
+                            <div class="icon-box-content">
+                                <h3 class="icon-box-title">Quality Support</h3><!-- End .icon-box-title -->
+                                <p>Alway online feedback 24/7</p>
+                            </div><!-- End .icon-box-content -->
+                        </div><!-- End .icon-box -->
+                    </div><!-- End .col-sm-6 col-lg-4 -->
+                </div>
+            </div><!-- End .row -->
+        </div><!-- End .container -->
     </div><!-- End .icon-boxes-container --> --}}
 
     <div class="bg-light-2 pt-6 pb-6 featured">
@@ -152,69 +152,67 @@
                                 }'>
                         {{#each featuredProductsWomen}}
                         <div class="product product-7 text-center">
-                            
+
                             <figure class="product-media">
-                                {{#ifCond SellingPrice '<' DiscountedPrice}}
-                                    <span class="product-label label-circle label-sell">Sale</span>
-                                {{/ifCond}}
-                                <a href="/product/{{Slug}}">
-                                    <img src="{{MainImage}}" alt="Product image"
-                                        class="product-image">
-                                    <img src="{{SecondaryImage}}" alt="Product image"
-                                        class="product-image-hover">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                            wishlist</span></a>
-                                    <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
-                                        title="Quick view"><span>Quick view</span></a>
-                                </div><!-- End .product-action-vertical -->
-
-                                <div class="product-action">
-                                    
-                                    {{#ifCond Size '||' Color}}
-                                        <a href="/product/{{Slug}}?msg=1" class="btn-product btn-cart"><span>add to cart</span></a>
-                                    {{else}}
-                                        <a onclick="addToCart('{{_id}}', 1,)" class="btn-product btn-cart"><span>add to cart</span></a>
+                                {{#ifCond SellingPrice '<' DiscountedPrice}} <span
+                                    class="product-label label-circle label-sell">Sale</span>
                                     {{/ifCond}}
-                                    
-                                </div><!-- End .product-action -->
+                                    <a href="/product/{{Slug}}">
+                                        <img src="{{MainImage}}" alt="Product image" class="product-image">
+                                        <img src="{{SecondaryImage}}" alt="Product image" class="product-image-hover">
+                                    </a>
+
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                                wishlist</span></a>
+                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
+                                            title="Quick view"><span>Quick view</span></a>
+                                    </div><!-- End .product-action-vertical -->
+
+                                    <div class="product-action">
+
+                                        {{#ifCond Size '||' Color}}
+                                        <a href="/product/{{Slug}}?msg=1" class="btn-product btn-cart"><span>add to
+                                                cart</span></a>
+                                        {{else}}
+                                        <a onclick="addToCart('{{_id}}', 1,)" class="btn-product btn-cart"><span>add to
+                                                cart</span></a>
+                                        {{/ifCond}}
+
+                                    </div><!-- End .product-action -->
                             </figure><!-- End .product-media -->
 
                             <div class="product-body">
                                 <h3 class="product-title"><a href="/product/{{Slug}}">{{Name}}</a></h3>
-                                
-                                <!-- start .product-price -->
-                                {{#ifCond SellingPrice '<' DiscountedPrice}}
-                                <div class="product-price mb-0">
-                                        <del>BDT {{DiscountedPrice}} </del>
-                                </div>
-                                <div class="product-price">
-                                    BDT {{SellingPrice}}
-                                </div>
-                                {{else}}
-                                <div class="product-price">
-                                    BDT {{DiscountedPrice}}
-                                </div>
-                                {{/ifCond}}
-                                <!-- End .product-price -->
 
-                                {{!-- <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 2 Reviews )</span>
-                                </div><!-- End .rating-container --> --}}
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-                        {{/each}}
-                    </div><!-- End .owl-carousel -->
-                </div><!-- .End .tab-pane -->
-                <div class="tab-pane p-0 fade" id="featured-men-tab" role="tabpanel"
-                    aria-labelledby="featured-men-link">
-                    <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
-                        data-owl-options='{
+                                <!-- start .product-price -->
+                                {{#ifCond SellingPrice '<' DiscountedPrice}} <div class="product-price mb-0">
+                                    <del>BDT {{DiscountedPrice}} </del>
+                            </div>
+                            <div class="product-price">
+                                BDT {{SellingPrice}}
+                            </div>
+                            {{else}}
+                            <div class="product-price">
+                                BDT {{DiscountedPrice}}
+                            </div>
+                            {{/ifCond}}
+                            <!-- End .product-price -->
+
+                            {{!-- <div class="ratings-container">
+                                <div class="ratings">
+                                    <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
+                                </div><!-- End .ratings -->
+                                <span class="ratings-text">( 2 Reviews )</span>
+                            </div><!-- End .rating-container --> --}}
+                        </div><!-- End .product-body -->
+                    </div><!-- End .product -->
+                    {{/each}}
+                </div><!-- End .owl-carousel -->
+            </div><!-- .End .tab-pane -->
+            <div class="tab-pane p-0 fade" id="featured-men-tab" role="tabpanel" aria-labelledby="featured-men-link">
+                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
+                    data-owl-options='{
                                     "nav": false, 
                                     "dots": true,
                                     "margin": 20,
@@ -238,18 +236,16 @@
                                         }
                                     }
                                 }'>
-                        {{#each featuredProductsMen}}
-                        <div class="product product-7 text-center">
-                            
-                            <figure class="product-media">
-                                {{#ifCond SellingPrice '<' DiscountedPrice}}
-                                    <span class="product-label label-circle label-sale">Sale</span>
+                    {{#each featuredProductsMen}}
+                    <div class="product product-7 text-center">
+
+                        <figure class="product-media">
+                            {{#ifCond SellingPrice '<' DiscountedPrice}} <span
+                                class="product-label label-circle label-sale">Sale</span>
                                 {{/ifCond}}
                                 <a href="/product/{{Slug}}">
-                                    <img src="{{MainImage}}" alt="Product image"
-                                        class="product-image">
-                                    <img src="{{SecondaryImage}}" alt="Product image"
-                                        class="product-image-hover">
+                                    <img src="{{MainImage}}" alt="Product image" class="product-image">
+                                    <img src="{{SecondaryImage}}" alt="Product image" class="product-image-hover">
                                 </a>
 
                                 <div class="product-action-vertical">
@@ -261,44 +257,45 @@
 
                                 <div class="product-action">
                                     {{#ifCond Size '||' Color}}
-                                        <a href="/product/{{Slug}}?msg=1" class="btn-product btn-cart"><span>add to cart</span></a>
+                                    <a href="/product/{{Slug}}?msg=1" class="btn-product btn-cart"><span>add to
+                                            cart</span></a>
                                     {{else}}
-                                        <a onclick="addToCart('{{_id}}', 1,)" class="btn-product btn-cart"><span>add to cart</span></a>
+                                    <a onclick="addToCart('{{_id}}', 1,)" class="btn-product btn-cart"><span>add to
+                                            cart</span></a>
                                     {{/ifCond}}
                                 </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
+                        </figure><!-- End .product-media -->
 
-                            <div class="product-body">
-                                <h3 class="product-title"><a href="/product/{{Slug}}">{{Name}}</a></h3>
-                                
-                                <!-- start .product-price -->
-                                {{#ifCond SellingPrice '<' DiscountedPrice}}
-                                <div class="product-price mb-0">
-                                        <del>BDT {{DiscountedPrice}} </del>
-                                    </div>
-                                    <div class="product-price">
-                                        BDT {{SellingPrice}}
-                                    </div>
-                                {{else}}
-                                <div class="product-price">
-                                    BDT {{DiscountedPrice}}
-                                </div>
-                                {{/ifCond}}
-                                <!-- End .product-price -->
+                        <div class="product-body">
+                            <h3 class="product-title"><a href="/product/{{Slug}}">{{Name}}</a></h3>
 
-                                {{!-- <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 2 Reviews )</span>
-                                </div><!-- End .rating-container --> --}}
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-                        {{/each}}
-                    </div><!-- End .owl-carousel -->
-                </div><!-- .End .tab-pane -->
-            </div><!-- End .tab-content -->
-        </div><!-- End .container-fluid -->
+                            <!-- start .product-price -->
+                            {{#ifCond SellingPrice '<' DiscountedPrice}} <div class="product-price mb-0">
+                                <del>BDT {{DiscountedPrice}} </del>
+                        </div>
+                        <div class="product-price">
+                            BDT {{SellingPrice}}
+                        </div>
+                        {{else}}
+                        <div class="product-price">
+                            BDT {{DiscountedPrice}}
+                        </div>
+                        {{/ifCond}}
+                        <!-- End .product-price -->
+
+                        {{!-- <div class="ratings-container">
+                            <div class="ratings">
+                                <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
+                            </div><!-- End .ratings -->
+                            <span class="ratings-text">( 2 Reviews )</span>
+                        </div><!-- End .rating-container --> --}}
+                    </div><!-- End .product-body -->
+                </div><!-- End .product -->
+                {{/each}}
+            </div><!-- End .owl-carousel -->
+        </div><!-- .End .tab-pane -->
+    </div><!-- End .tab-content -->
+    </div><!-- End .container-fluid -->
     </div><!-- End .bg-light-2 pt-4 pb-4 -->
 
     <div class="mb-6"></div><!-- End .mb-6 -->
@@ -327,16 +324,14 @@
                         {{#each newArivalWomen}}
                         <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
                             <div class="product product-7 text-center">
-                                
+
                                 <figure class="product-media">
                                     {{#if IsFeatured}}
                                     <span class="product-label label-circle label-top">Top</span>
                                     {{/if}}
                                     <a href="/product/{{Slug}}">
-                                        <img src="{{MainImage}}" alt="Product image"
-                                            class="product-image">
-                                        <img src="{{SecondaryImage}}" alt="Product image"
-                                            class="product-image-hover">
+                                        <img src="{{MainImage}}" alt="Product image" class="product-image">
+                                        <img src="{{SecondaryImage}}" alt="Product image" class="product-image-hover">
                                     </a>
 
                                     <div class="product-action-vertical">
@@ -348,73 +343,19 @@
 
                                     <div class="product-action">
                                         {{#ifCond Size '||' Color}}
-                                        <a href="/product/{{Slug}}?msg=1" class="btn-product btn-cart"><span>add to cart</span></a>
-                                    {{else}}
-                                        <a onclick="addToCart('{{_id}}', 1,)" class="btn-product btn-cart"><span>add to cart</span></a>
-                                    {{/ifCond}}
+                                        <a href="/product/{{Slug}}?msg=1" class="btn-product btn-cart"><span>add to
+                                                cart</span></a>
+                                        {{else}}
+                                        <a onclick="addToCart('{{_id}}', 1,)" class="btn-product btn-cart"><span>add to
+                                                cart</span></a>
+                                        {{/ifCond}}
                                     </div><!-- End .product-action -->
                                 </figure><!-- End .product-media -->
 
                                 <div class="product-body">
                                     <h3 class="product-title"><a href="/product/{{Slug}}">{{Name}}</a></h3>
                                     <!-- End .product-title -->
-                                    <div class="product-price">
-                                        {{SellingPrice}}
-                                    </div><!-- End .product-price -->
-                                    {{!-- <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-                                        </div><!-- End .ratings -->
-                                        <span class="ratings-text">( 2 Reviews )</span>
-                                    </div><!-- End .rating-container --> --}}
-                                </div><!-- End .product-body -->
-                            </div><!-- End .product -->
-                        </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->    
-                        {{/each}}
-                        
-                    </div><!-- End .row -->
-                </div><!-- End .products -->
-            </div><!-- .End .tab-pane -->
-            <div class="tab-pane p-0 fade" id="new-men-tab" role="tabpanel" aria-labelledby="new-men-link">
-                <div class="products">
-                    <div class="row justify-content-center">
-                        
-                            {{#each newArivalMen}}
-                            <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
-                            <div class="product product-7 text-center">
-                                <figure class="product-media">
-                                    {{#if IsFeatured}}
-                                    <span class="product-label label-circle label-top">Top</span>
-                                    {{/if}}
-                                    
-                                    <a href="/product/{{Slug}}">
-                                        <img src="{{MainImage}}"
-                                            alt="Product image" class="product-image">
-                                        <img src="{{SecondaryImage}}"
-                                            alt="Product image" class="product-image-hover">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
-                                                wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
-                                            title="Quick view"><span>Quick view</span></a>
-                                    </div><!-- End .product-action-vertical -->
-
-                                    <div class="product-action">
-                                        {{#ifCond Size '||' Color}}
-                                        <a href="/product/{{Slug}}?msg=1" class="btn-product btn-cart"><span>add to cart</span></a>
-                                    {{else}}
-                                        <a onclick="addToCart('{{_id}}', 1,)" class="btn-product btn-cart"><span>add to cart</span></a>
-                                    {{/ifCond}}
-                                    </div><!-- End .product-action -->
-                                </figure><!-- End .product-media -->
-
-                                <div class="product-body">
-                                    <h3 class="product-title"><a href="/product/{{Slug}}">{{Name}}</a></h3>
-                                    <!-- End .product-title -->
-                                    {{#ifCond SellingPrice '<' DiscountedPrice}}
-                                    <div class="product-price mb-0">
+                                    {{#ifCond SellingPrice '<' DiscountedPrice}} <div class="product-price mb-0">
                                         <del>BDT {{DiscountedPrice}} </del>
                                     </div>
                                     <div class="product-price">
@@ -425,34 +366,97 @@
                                         BDT {{DiscountedPrice}}
                                     </div>
                                     {{/ifCond}}
-                                    {{!-- <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 100%;"></div>
-                                            <!-- End .ratings-val -->
-                                        </div><!-- End .ratings -->
-                                        <span class="ratings-text">( 6 Reviews )</span>
-                                    </div><!-- End .rating-container --> --}}
-                                </div><!-- End .product-body -->
-                            </div><!-- End .product -->
+                                {{!-- <div class="ratings-container">
+                                    <div class="ratings">
+                                        <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
+                                    </div><!-- End .ratings -->
+                                    <span class="ratings-text">( 2 Reviews )</span>
+                                </div><!-- End .rating-container --> --}}
+                            </div><!-- End .product-body -->
+                        </div><!-- End .product -->
+                    </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+                    {{/each}}
+
+                </div><!-- End .row -->
+            </div><!-- End .products -->
+        </div><!-- .End .tab-pane -->
+        <div class="tab-pane p-0 fade" id="new-men-tab" role="tabpanel" aria-labelledby="new-men-link">
+            <div class="products">
+                <div class="row justify-content-center">
+
+                    {{#each newArivalMen}}
+                    <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                        <div class="product product-7 text-center">
+                            <figure class="product-media">
+                                {{#if IsFeatured}}
+                                <span class="product-label label-circle label-top">Top</span>
+                                {{/if}}
+
+                                <a href="/product/{{Slug}}">
+                                    <img src="{{MainImage}}" alt="Product image" class="product-image">
+                                    <img src="{{SecondaryImage}}" alt="Product image" class="product-image-hover">
+                                </a>
+
+                                <div class="product-action-vertical">
+                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to
+                                            wishlist</span></a>
+                                    <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
+                                        title="Quick view"><span>Quick view</span></a>
+                                </div><!-- End .product-action-vertical -->
+
+                                <div class="product-action">
+                                    {{#ifCond Size '||' Color}}
+                                    <a href="/product/{{Slug}}?msg=1" class="btn-product btn-cart"><span>add to
+                                            cart</span></a>
+                                    {{else}}
+                                    <a onclick="addToCart('{{_id}}', 1,)" class="btn-product btn-cart"><span>add to
+                                            cart</span></a>
+                                    {{/ifCond}}
+                                </div><!-- End .product-action -->
+                            </figure><!-- End .product-media -->
+
+                            <div class="product-body">
+                                <h3 class="product-title"><a href="/product/{{Slug}}">{{Name}}</a></h3>
+                                <!-- End .product-title -->
+                                {{#ifCond SellingPrice '<' DiscountedPrice}} <div class="product-price mb-0">
+                                    <del>BDT {{DiscountedPrice}} </del>
                             </div>
-                            {{/each}}
-                        <!-- End .col-sm-6 col-md-4 col-lg-3 -->
-                    </div><!-- End .row -->
-                </div><!-- End .products -->
-            </div><!-- .End .tab-pane -->
-        </div><!-- End .tab-content -->
+                            <div class="product-price">
+                                BDT {{SellingPrice}}
+                            </div>
+                            {{else}}
+                            <div class="product-price">
+                                BDT {{DiscountedPrice}}
+                            </div>
+                            {{/ifCond}}
+                            {{!-- <div class="ratings-container">
+                                <div class="ratings">
+                                    <div class="ratings-val" style="width: 100%;"></div>
+                                    <!-- End .ratings-val -->
+                                </div><!-- End .ratings -->
+                                <span class="ratings-text">( 6 Reviews )</span>
+                            </div><!-- End .rating-container --> --}}
+                        </div><!-- End .product-body -->
+                    </div><!-- End .product -->
+                </div>
+                {{/each}}
+                <!-- End .col-sm-6 col-md-4 col-lg-3 -->
+            </div><!-- End .row -->
+        </div><!-- End .products -->
+    </div><!-- .End .tab-pane -->
+    </div><!-- End .tab-content -->
 
-        <div class="more-container text-center mt-2">
-            <a href="/shop" class="btn btn-outline-dark-3 btn-more"><span>Load more</span><i
-                    class="icon-long-arrow-right"></i></a>
-        </div><!-- End .more-container -->
+    <div class="more-container text-center mt-2">
+        <a href="/shop" class="btn btn-outline-dark-3 btn-more"><span>Load more</span><i
+                class="icon-long-arrow-right"></i></a>
+    </div><!-- End .more-container -->
 
-        <hr class="mt-0 mb-6">
+    <hr class="mt-0 mb-6">
 
-        {{!-- <div class="blog-posts mb-4">
-            <h2 class="title text-center mb-3">From Our Blog</h2><!-- End .title text-center -->
+    {{!-- <div class="blog-posts mb-4">
+        <h2 class="title text-center mb-3">From Our Blog</h2><!-- End .title text-center -->
 
-            <div class="owl-carousel owl-simple mb-2" data-toggle="owl" data-owl-options='{
+        <div class="owl-carousel owl-simple mb-2" data-toggle="owl" data-owl-options='{
                             "nav": false, 
                             "dots": true,
                             "items": 3,
@@ -473,95 +477,95 @@
                                 }
                             }
                         }'>
-                <article class="entry">
-                    <figure class="entry-media">
-                        <a href="single.html">
-                            <img src="home/assets/images/demos/demo-7/blog/post-1.jpg" alt="image desc">
-                        </a>
-                    </figure><!-- End .entry-media -->
+            <article class="entry">
+                <figure class="entry-media">
+                    <a href="single.html">
+                        <img src="home/assets/images/demos/demo-7/blog/post-1.jpg" alt="image desc">
+                    </a>
+                </figure><!-- End .entry-media -->
 
-                    <div class="entry-body text-center">
-                        <div class="entry-meta">
-                            <a href="#">Nov 22, 2018</a>, 1 Comments
-                        </div><!-- End .entry-meta -->
+                <div class="entry-body text-center">
+                    <div class="entry-meta">
+                        <a href="#">Nov 22, 2018</a>, 1 Comments
+                    </div><!-- End .entry-meta -->
 
-                        <h3 class="entry-title">
-                            <a href="single.html">Sed adipiscing ornare.</a>
-                        </h3><!-- End .entry-title -->
+                    <h3 class="entry-title">
+                        <a href="single.html">Sed adipiscing ornare.</a>
+                    </h3><!-- End .entry-title -->
 
-                        <div class="entry-content">
-                            <a href="single.html" class="read-more">Read More</a>
-                        </div><!-- End .entry-content -->
-                    </div><!-- End .entry-body -->
-                </article><!-- End .entry -->
+                    <div class="entry-content">
+                        <a href="single.html" class="read-more">Read More</a>
+                    </div><!-- End .entry-content -->
+                </div><!-- End .entry-body -->
+            </article><!-- End .entry -->
 
-                <article class="entry">
-                    <figure class="entry-media">
-                        <a href="single.html">
-                            <img src="home/assets/images/demos/demo-7/blog/post-2.jpg" alt="image desc">
-                        </a>
-                    </figure><!-- End .entry-media -->
+            <article class="entry">
+                <figure class="entry-media">
+                    <a href="single.html">
+                        <img src="home/assets/images/demos/demo-7/blog/post-2.jpg" alt="image desc">
+                    </a>
+                </figure><!-- End .entry-media -->
 
-                    <div class="entry-body text-center">
-                        <div class="entry-meta">
-                            <a href="#">Dec 12, 2018</a>, 0 Comments
-                        </div><!-- End .entry-meta -->
+                <div class="entry-body text-center">
+                    <div class="entry-meta">
+                        <a href="#">Dec 12, 2018</a>, 0 Comments
+                    </div><!-- End .entry-meta -->
 
-                        <h3 class="entry-title">
-                            <a href="single.html">Fusce lacinia arcuet nulla.</a>
-                        </h3><!-- End .entry-title -->
+                    <h3 class="entry-title">
+                        <a href="single.html">Fusce lacinia arcuet nulla.</a>
+                    </h3><!-- End .entry-title -->
 
-                        <div class="entry-content">
-                            <a href="single.html" class="read-more">Read More</a>
-                        </div><!-- End .entry-content -->
-                    </div><!-- End .entry-body -->
-                </article><!-- End .entry -->
+                    <div class="entry-content">
+                        <a href="single.html" class="read-more">Read More</a>
+                    </div><!-- End .entry-content -->
+                </div><!-- End .entry-body -->
+            </article><!-- End .entry -->
 
-                <article class="entry">
-                    <figure class="entry-media">
-                        <a href="single.html">
-                            <img src="home/assets/images/demos/demo-7/blog/post-3.jpg" alt="image desc">
-                        </a>
-                    </figure><!-- End .entry-media -->
+            <article class="entry">
+                <figure class="entry-media">
+                    <a href="single.html">
+                        <img src="home/assets/images/demos/demo-7/blog/post-3.jpg" alt="image desc">
+                    </a>
+                </figure><!-- End .entry-media -->
 
-                    <div class="entry-body text-center">
-                        <div class="entry-meta">
-                            <a href="#">Dec 19, 2018</a>, 2 Comments
-                        </div><!-- End .entry-meta -->
+                <div class="entry-body text-center">
+                    <div class="entry-meta">
+                        <a href="#">Dec 19, 2018</a>, 2 Comments
+                    </div><!-- End .entry-meta -->
 
-                        <h3 class="entry-title">
-                            <a href="single.html">Quisque volutpat mattis eros.</a>
-                        </h3><!-- End .entry-title -->
+                    <h3 class="entry-title">
+                        <a href="single.html">Quisque volutpat mattis eros.</a>
+                    </h3><!-- End .entry-title -->
 
-                        <div class="entry-content">
-                            <a href="single.html" class="read-more">Read More</a>
-                        </div><!-- End .entry-content -->
-                    </div><!-- End .entry-body -->
-                </article><!-- End .entry -->
+                    <div class="entry-content">
+                        <a href="single.html" class="read-more">Read More</a>
+                    </div><!-- End .entry-content -->
+                </div><!-- End .entry-body -->
+            </article><!-- End .entry -->
 
-                <article class="entry">
-                    <figure class="entry-media">
-                        <a href="single.html">
-                            <img src="home/assets/images/demos/demo-7/blog/post-4.jpg" alt="image desc">
-                        </a>
-                    </figure><!-- End .entry-media -->
+            <article class="entry">
+                <figure class="entry-media">
+                    <a href="single.html">
+                        <img src="home/assets/images/demos/demo-7/blog/post-4.jpg" alt="image desc">
+                    </a>
+                </figure><!-- End .entry-media -->
 
-                    <div class="entry-body text-center">
-                        <div class="entry-meta">
-                            <a href="#">Dec 25, 2018</a>, 3 Comments
-                        </div><!-- End .entry-meta -->
+                <div class="entry-body text-center">
+                    <div class="entry-meta">
+                        <a href="#">Dec 25, 2018</a>, 3 Comments
+                    </div><!-- End .entry-meta -->
 
-                        <h3 class="entry-title">
-                            <a href="single.html">Mauris suscipit in massa.</a>
-                        </h3><!-- End .entry-title -->
+                    <h3 class="entry-title">
+                        <a href="single.html">Mauris suscipit in massa.</a>
+                    </h3><!-- End .entry-title -->
 
-                        <div class="entry-content">
-                            <a href="single.html" class="read-more">Read More</a>
-                        </div><!-- End .entry-content -->
-                    </div><!-- End .entry-body -->
-                </article><!-- End .entry -->
-            </div><!-- End .owl-carousel -->
-        </div><!-- End .blog-posts --> --}}
+                    <div class="entry-content">
+                        <a href="single.html" class="read-more">Read More</a>
+                    </div><!-- End .entry-content -->
+                </div><!-- End .entry-body -->
+            </article><!-- End .entry -->
+        </div><!-- End .owl-carousel -->
+    </div><!-- End .blog-posts --> --}}
     </div><!-- End .container-fluid -->
 
     {{!-- <div class="bg-light-2 pt-7 pb-6 testimonials">
