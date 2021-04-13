@@ -7,7 +7,6 @@ const {
 } = require("../../../helpers/mongoobjecthelper");
 
 router.get("/:id", async (req, res) => {
-    console.log('in');
     let reviews = await ReviewModel.find({Product: req.params.id}).populate({
       path: 'Customer',
       model: customerModel,
@@ -21,6 +20,7 @@ router.get("/:id", async (req, res) => {
         InsertionDate: review.InsertionDate,
         Customer_name: review.Customer.Name,
         Customer_phone: review.Customer.Phone,
+        IsAuthorized: review.IsAuthorized
       }
     })
     res.json(

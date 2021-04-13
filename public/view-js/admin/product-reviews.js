@@ -31,17 +31,28 @@ window.onload = function () {
               if(data.Count > 0){
                 data= data.Items;
                 for(let i=0; i<data.length; i++){
-                context+=`
-                  <tr>
-                      <td class="fixdate">${dateFormat(data[i].InsertionDate)}</td>
-                      <td>${data[i].Customer_name}</td>
-                      <td>${data[i].Customer_phone}</td>
-                      <td>${data[i].Review}</td>
-                      <td>
-                          <a class="btn btn-danger" onclick="deleteReview('${data[i]._id}')"><i class="fa fa-trash"></i></a>
-                      </td>
-                  </tr>
-                `;
+                  let str = "", authStatus="";
+                  if(data[i].IsAuthorized == true){
+                    str = `<a title='Unauthorize' class="btn btn-danger" onclick="switchAuthorization('${data[i]._id}', false)"><i class="fa fa-times"></i></a>`;
+                    authStatus = "Authorized";
+                  }
+                  else{
+                    str = `<a title='Authorize' class="btn btn-success" onclick="switchAuthorization('${data[i]._id}', true)"><i class="fa fa-check"></i></a>`;
+                    authStatus = "Unauthorized";
+                  }
+                  context+=`
+                    <tr>
+                        <td class="fixdate">${dateFormat(data[i].InsertionDate)}</td>
+                        <td>${data[i].Customer_name}</td>
+                        <td>${data[i].Customer_phone}</td>
+                        <td>${data[i].Review}</td>
+                        <td>${authStatus}</td>
+                        <td style='width: 10%'>
+                            ${str}
+                            <a class="btn btn-danger" onclick="deleteReview('${data[i]._id}')"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                  `;
                 }
 
               }
@@ -74,6 +85,12 @@ function deleteImage(imgId){
       }
     }       
   );
+}
+
+function switchAuthorization(reviewId, sts){
+  $('#review_to_be_authorized').val(reviewId);
+  $('#authorization_sts').val(sts);
+  $('#authorization-review-button').click();
 }
 
 function deleteReview(id){

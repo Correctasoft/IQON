@@ -39,6 +39,7 @@
                                         <th>Customer Name</th>
                                         <th>Customer Phone</th>
                                         <th>Review</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -46,8 +47,6 @@
                                     
                                 </tbody>
                             </table>
-
-                            <div id="review-table"></div>
                         </div><!-- /.table-responsive -->
                     </div><!-- /.box-body -->
                     <div class="box-footer clearfix">
@@ -64,6 +63,12 @@
 <form action="/admin/review/delete" style="display: none;" method="POST">
     <input type="hidden" name="review_id" id="review_to_be_deleted">
     <button type="submit" id="delete-review-button">submit</button>
+</form>
+
+<form action="/admin/review/authorization" style="display: none;" method="POST">
+    <input type="hidden" name="review_id" id="review_to_be_authorized">
+    <input type="hidden" name="review_sts" id="authorization_sts">
+    <button type="submit" id="authorization-review-button">submit</button>
 </form>
 
 <script src="/view-js/admin/product-reviews.js" type="text/javascript"> </script>

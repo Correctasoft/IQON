@@ -131,7 +131,7 @@
                                     </select>
                                 </div><!-- End .select-custom -->
 
-                                <a href="#" class="size-guide"><i class="icon-th-list"></i>size guide</a>
+                                {{!-- <a href="#" class="size-guide"><i class="icon-th-list"></i>size guide</a> --}}
                             </div><!-- End .details-filter-row -->
                             {{/if}}
 
@@ -283,8 +283,8 @@
 
                             <div class="review">
                                 <div class="row no-gutters">
-                                    <div class="col-auto">
-                                        <h4><a href="#">{{Customer.Name}}</a></h4>
+                                    <div class="col-3">
+                                        <h4><a>{{Customer.Name}}</a></h4>
                                         <div class="ratings-container">
                                             {{!-- <div class="ratings">
                                                 <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
@@ -292,11 +292,11 @@
                                         </div><!-- End .rating-container -->
                                         <span class="review-date">{{InsertionDate}}</span>
                                     </div><!-- End .col -->
-                                    <div class="col">
+                                    <div class="col-9">
                                         {{!-- <h4>Very good</h4> --}}
 
                                         <div class="review-content">
-                                            <p>{{Review}}</p>
+                                            <p style="color: black;">{{Review}}</p>
                                         </div><!-- End .review-content -->
 
                                         <div class="review-action">

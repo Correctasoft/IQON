@@ -14,6 +14,10 @@ const ReviewSchema = new Schema({
     type: Schema.Types.ObjectId,
     default: 'Product',
   },
+  IsAuthorized:{
+    type: Boolean,
+    default: false
+  },
   InsertionDate: {
     type: Date,
     default: Date.now(),

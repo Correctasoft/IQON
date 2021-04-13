@@ -20,5 +20,15 @@ router.post('/delete',  userAuthentication, async(req, res) => {
     });
 });
 
+router.post('/authorization',  userAuthentication, async(req, res) => {
+    ReviewModel.updateOne({_id: req.body.review_id},{
+        $set:{
+            IsAuthorized: req.body.review_sts
+        }
+    }).then((_)=>{
+        res.redirect("/admin/review");
+    });
+});
+
 
 module.exports = router;

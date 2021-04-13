@@ -39,10 +39,18 @@ router.get('/:slug', getCommonData, getLoggedInCustomer, async (req, res) => {
     });
     let message = null;
     if(req.query.msg){
-        message= {
-            'text': 'Please select attributes first',
-            'alertType': 'warning',
-        };
+        if(req.query.msg == 1){
+            message= {
+                'text': 'Please select attributes first',
+                'alertType': 'warning',
+            }
+        }
+        else if(req.query.msg == 2){
+            message= {
+                'text': 'Review submitted. Waiting to be authorized by Admin',
+                'alertType': 'success',
+            }
+        }
     }
     product = mongooseToObj(product);
     if(product.Color && product.Color != ''){
@@ -69,7 +77,7 @@ router.get('/:slug', getCommonData, getLoggedInCustomer, async (req, res) => {
             return true;
     });
 
-    let reviews = multipleMongooseToObj( await reviewModel.find({Product: product._id}).populate({
+    let reviews = multipleMongooseToObj( await reviewModel.find({Product: product._id, IsAuthorized: true}).populate({
         path: 'Customer',
         model: customerModel
     }));
@@ -94,8 +102,7 @@ router.post('/review',requireCustomerLogin, getLoggedInCustomer, async (req, res
     newReview
     .save()
     .then((savedData) => {
-        
-        res.redirect("/product/"+req.body.slug);
+        res.redirect("/product/"+req.body.slug+"?msg=2");
     });
 });
 
