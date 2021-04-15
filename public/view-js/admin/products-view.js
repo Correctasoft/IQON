@@ -97,7 +97,7 @@ $(function () {
         field: "MainImage",
         headerText: "Main Image",
         textAlign: ej.TextAlign.Center,
-        template: "<img class='Product-image' src='\{{: MainImage }}'>",
+        template: "<img class='Product-image' src='/admin/api/products/mainimage/\{{:_id}}?height=150&width=150&quality=70'>",
         validationRules: { required: true, number: false },
         width: 40,
       },
@@ -105,7 +105,7 @@ $(function () {
         field: "SecondaryImage",
         headerText: "Secondary Image",
         textAlign: ej.TextAlign.Center,
-        template: "<img class='Product-image' src='\{{: SecondaryImage }}'>",
+        template: "<img class='Product-image' src='/admin/api/products/seondaryimage/\{{:_id}}?height=150&width=150&quality=70'>",
         validationRules: { required: true, number: false },
         width: 40,
       },
@@ -170,6 +170,9 @@ let completeProduct = function (args) {
     document.getElementById("ProductFeatured").checked = args.rowData.IsFeatured;
     document.getElementById("ProductStockAvailable").checked = args.rowData.StockAvailable;
     document.getElementById("ProductActive").checked = args.rowData.Active;
+
+    document.getElementById('Product_image').src = "/admin/api/products/mainimage/"+args.rowData._id+"?height=150&width=150&quality=70";
+    document.getElementById('Product_image1').src = "/admin/api/products/seondaryimage/"+args.rowData._id+"?height=150&width=150&quality=70";
     populateParentProductDropDown(global_Product_data);
     var obj = $("#ProductCategory").data("ejDropDownList");
     if (args.rowData.Category) {
@@ -183,6 +186,7 @@ let completeProduct = function (args) {
   }
   if (args.requestType == "save") {
     $("#ProductGrid").ejGrid("refreshContent");
+    location.reload();
   }
 }
 //#region upon edit or save grid

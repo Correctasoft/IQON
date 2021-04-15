@@ -32,10 +32,10 @@ router.post('/login', async (req, res) => {
                     
                     req.session.loggedInUser= userObj;
                     
-                    req.session.message= {
-                        text: "Hello "+user.Name,
-                        alertType: 'success'
-                    }
+                    // req.session.message= {
+                    //     text: "Hello "+user.Name,
+                    //     alertType: 'success'
+                    // }
 
                     res.redirect('/admin');
                 } else {
@@ -108,6 +108,7 @@ router.get('/logout', (req, res) => {
     if (req.session) {
         req.session.destroy(() => {
             if(message){
+                console.log(req.session);
                 req.session.message = message;
             }
             res.redirect('/admin/login');

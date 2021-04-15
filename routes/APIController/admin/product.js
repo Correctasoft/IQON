@@ -34,6 +34,9 @@ router.get("/", (req, res) => {
           $options: "i",
         }
       }, ],
+    }).select({
+      MainImage : 0,
+      SecondaryImage : 0,
     }).
     populate({
         path: 'Category',
@@ -81,7 +84,11 @@ router.get("/", (req, res) => {
                     $options: "i",
                   }
                 }, ],
-              }).sort([
+              }).select({
+                MainImage : 0,
+                SecondaryImage : 0,
+              })
+              .sort([
                 [sortingParameters[0], getOrdering(sortingParameters[1])]
               ])
               .limit(parseInt(req.query.$top))
@@ -132,6 +139,10 @@ router.get("/", (req, res) => {
                   }
                 }, ],
               })
+              .select({
+                MainImage : 0,
+                SecondaryImage : 0,
+              })
               .limit(parseInt(req.query.$top))
               .skip(parseInt(req.query.$skip))
               .populate({
@@ -154,7 +165,7 @@ router.get("/", (req, res) => {
 });
 
 router.put("/", (req, res) => {
-  if (req.body.ProductImage.includes(';base64,') && req.body.ProductImage1.includes(';base64,')) {
+  if (req.body.ProductImage1 && req.body.ProductImage && req.body.ProductImage.includes(';base64,') && req.body.ProductImage1.includes(';base64,')) {
     let base64Image = req.body.ProductImage.split(';base64,').pop();
     let image1type = req.body.ProductImage.split(';base64,')[0];
     let image2type = req.body.ProductImage1.split(';base64,')[0];
@@ -202,13 +213,7 @@ router.put("/", (req, res) => {
           .then((_) => {
             fs.unlink('image.png', (err => {
               if (err) console.log(err);
-              else {
-                res.writeHead(200, {
-                  "Content-Type": "image/png",
-                  "Content-Length": img.length,
-                });
-                res.end(img);
-              }
+              
             }));
             res.json({
               status: 200,
