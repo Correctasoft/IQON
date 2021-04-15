@@ -199,6 +199,16 @@ router.put("/", (req, res) => {
           },
         })
         .then((_) => {
+          fs.unlink('image.png', (err => {
+            if (err) console.log(err);
+            else {
+              res.writeHead(200, {
+                "Content-Type": "image/png",
+                "Content-Length": img.length,
+              });
+              res.end(img);
+            }
+          }));
           res.json({
             status: 200,
           });
@@ -252,6 +262,16 @@ router.post("/", async (req, res) => {
         //UpdatedBy: req.user._id
       });
       await newProduct.save();
+      fs.unlink('image.png', (err => {
+        if (err) console.log(err);
+        else {
+          res.writeHead(200, {
+            "Content-Type": "image/png",
+            "Content-Length": img.length,
+          });
+          res.end(img);
+        }
+      }));
       res.json({
         status: 200,
       });
@@ -295,7 +315,7 @@ router.get('/parent-categories', (req, res) => {
 });
 
 router.get('/mini-products', (req, res) => {
-    ProductModel.find({
+  ProductModel.find({
       IsDelete: false
     }).select({
       "Name": 1,
@@ -312,5 +332,87 @@ router.get('/mini-products', (req, res) => {
       console.log(err);
     });
 });
+
+router.get('/mainimage/:id', (req, res) => {
+  console.log(req.query);
+  let height = parseInt(req.query.height);
+  let width = parseInt(req.query.width);
+  let quantity = parseInt(req.query.quality);
+  ProductModel.findOne({
+      IsDelete: false,
+      _id: req.params.id
+    }).select({
+      "MainImage": 1
+    })
+    .then((product) => {
+      let base64Image = product.MainImage.split(';base64,').pop();
+      fs.writeFile(req.params.id + 'image1.png', base64Image, {
+        encoding: 'base64'
+      }, async function (err) {
+        const image = await Jimp.read(req.params.id + 'image1.png');
+        await image.resize(width, height);
+        await image.quality(quantity);
+        await image.writeAsync(req.params.id + 'image1.png');
+        let img1 = fs.readFileSync(req.params.id + 'image1.png');
+        let encode_image1 = img1.toString('base64');
+        var img = Buffer.from(encode_image1, "base64");
+        fs.unlink(req.params.id + 'image1.png', (err => {
+          if (err) console.log(err);
+          else {
+            res.writeHead(200, {
+              "Content-Type": "image/png",
+              "Content-Length": img.length,
+            });
+            res.end(img);
+          }
+        }));
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+
+router.get('/seondaryimage/:id', (req, res) => {
+  let height = parseInt(req.query.height);
+  let width = parseInt(req.query.width);
+  let quantity = parseInt(req.query.quality);
+  ProductModel.findOne({
+      IsDelete: false,
+      _id: req.params.id
+    }).select({
+      "SecondaryImage": 1
+    })
+    .then((product) => {
+      let base64Image = product.SecondaryImage.split(';base64,').pop();
+      fs.writeFile(req.params.id + 'image2.png', base64Image, {
+        encoding: 'base64'
+      }, async function (err) {
+        const image = await Jimp.read(req.params.id + 'image2.png');
+        await image.resize(width, height);
+        await image.quality(quantity);
+        await image.writeAsync(req.params.id + 'image2.png');
+        let img1 = fs.readFileSync(req.params.id + 'image2.png');
+        let encode_image1 = img1.toString('base64');
+        var img = Buffer.from(encode_image1, "base64");
+        fs.unlink(req.params.id + 'image2.png', (err => {
+          if (err) console.log(err);
+          else {
+            res.writeHead(200, {
+              "Content-Type": "image/png",
+              "Content-Length": img.length,
+            });
+            res.end(img);
+          }
+        }));
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+
 
 module.exports = router;
