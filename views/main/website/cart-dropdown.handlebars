@@ -29,7 +29,7 @@
 
                 <figure class="product-image-container">
                     <a href="/product/{{Product.Slug}}" class="product-image">
-                        <img src="{{Product.MainImage}}" alt="product">
+                        <img src="/admin/api/products/mainimage/{{Product._id}}?height=250&width=250&quality=70" alt="product">
                     </a>
                 </figure>
                 <a onclick="removeFromCart('{{_id}}')" class="btn-remove" style="cursor: pointer;" title="Remove Product"><i class="icon-close"></i></a>

@@ -39,8 +39,8 @@
                         <div class="product-gallery product-gallery-vertical">
                             <div class="row">
                                 <figure class="product-main-image">
-                                    <img id="product-zoom" src="{{product.MainImage}}"
-                                        data-zoom-image="{{product.MainImage}}" alt="product image">
+                                    <img id="product-zoom" src="/admin/api/products/mainimage/{{product._id}}?height=500&width=500&quality=70"
+                                        data-zoom-image="/admin/api/products/mainimage/{{product._id}}?height=750&width=750&quality=90" alt="product image">
 
                                     <a href="#" id="btn-product-gallery" class="btn-product-gallery">
                                         <i class="icon-arrows"></i>
@@ -50,15 +50,15 @@
                                 <div id="product-zoom-gallery" class="product-image-gallery">
                                     
                                     <a class="product-gallery-item active" href="#"
-                                        data-image="{{product.MainImage}}"
-                                        data-zoom-image="{{product.MainImage}}">
-                                        <img src="{{product.MainImage}}" alt="{{product.Name}} Mian Image">
+                                        data-image="/admin/api/products/mainimage/{{product._id}}?height=500&width=500&quality=70"
+                                        data-zoom-image="/admin/api/products/mainimage/{{product._id}}?height=750&width=750&quality=90">
+                                        <img src="/admin/api/products/mainimage/{{product._id}}?height=500&width=500&quality=70" alt="{{product.Name}} Mian Image">
                                     </a>
 
                                     <a class="product-gallery-item" href="#"
-                                        data-image="{{product.SecondaryImage}}"
-                                        data-zoom-image="{{product.SecondaryImage}}">
-                                        <img src="{{product.SecondaryImage}}" alt="{{product.Name}} Secoundary Image">
+                                        data-image="/admin/api/products/seondaryimage/{{product._id}}?height=500&width=500&quality=70"
+                                        data-zoom-image="/admin/api/products/seondaryimage/{{product._id}}?height=750&width=750&quality=90">
+                                        <img src="/admin/api/products/seondaryimage/{{product._id}}?height=500&width=500&quality=70" alt="{{product.Name}} Secoundary Image">
                                     </a>
 
                                     {{#each product.images}}
@@ -361,7 +361,7 @@
                             <span class="product-label label-danger">Stock Out</span>
                         {{/if}}
                         <a href="/product/{{Slug}}">
-                            <img src="{{MainImage}}" alt="Product image" class="product-image">
+                            <img src="/admin/api/products/mainimage/{{_id}}?height=250&width=250&quality=70"  alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">

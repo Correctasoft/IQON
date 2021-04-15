@@ -15,7 +15,8 @@
                     <span class="product-label label-danger">Stock Out</span>
                     {{/if}}
                     <a href="/product/{{Slug}}">
-                        <img src="{{MainImage}}" alt="Product image" class="product-image">
+                        <img src="/admin/api/products/mainimage/{{_id}}?height=250&width=250&quality=70"  alt="Product image" class="product-image">
+                        <img src="/admin/api/products/seondaryimage/{{_id}}?height=250&width=250&quality=70"  alt="Product image" class="product-image-hover">
                     </a>
 
                     <div class="product-action-vertical">
