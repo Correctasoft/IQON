@@ -388,7 +388,6 @@ router.get('/mini-products', (req, res) => {
 });
 
 router.get('/mainimage/:id', (req, res) => {
-  console.log(req.query);
   let height = parseInt(req.query.height);
   let width = parseInt(req.query.width);
   let quantity = parseInt(req.query.quality);
