@@ -300,11 +300,6 @@ router.post("/", async (req, res) => {
         fs.unlink('image.png', (err => {
           if (err) console.log(err);
           else {
-            res.writeHead(200, {
-              "Content-Type": "image/png",
-              "Content-Length": img.length,
-            });
-            res.end(img);
           }
         }));
         res.json({
