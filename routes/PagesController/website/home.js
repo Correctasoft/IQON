@@ -37,6 +37,7 @@ router.get('/', getLoggedInCustomer, async (req, res) => {
     let idsCategoryUnderMen = categoryUnderMen.map(category=> {return category._id});
     let featuredProductsMen= multipleMongooseToObj(await productModel.find({
         IsFeatured: true,
+        IsDelete: false,
         Category:{
             $in: idsCategoryUnderMen
         }
@@ -49,18 +50,21 @@ router.get('/', getLoggedInCustomer, async (req, res) => {
     let idsCategoryUnderWomen = categoryUnderWomen.map(category=> {return category._id});
     let featuredProductsWomen= multipleMongooseToObj(await productModel.find({
         IsFeatured: true,
+        IsDelete: false,
         Category:{
             $in: idsCategoryUnderWomen
         }
     }));
 
     let newArivalMen = multipleMongooseToObj(await productModel.find({
+        IsDelete: false,
         Category:{
             $in: idsCategoryUnderMen
         }
     }).sort({InsertionDate:-1}).limit(12));
 
     let newArivalWomen = multipleMongooseToObj(await productModel.find({
+        IsDelete: false,
         Category:{
             $in: idsCategoryUnderWomen
         }
