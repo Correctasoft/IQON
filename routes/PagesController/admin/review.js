@@ -3,9 +3,9 @@ const router = express.Router();
 const ProductModel = require("../../../models/Product");
 const ReviewModel =  require('../../../models/Review');
 const { multipleMongooseToObj, mongooseToObj } = require("../../../helpers/mongoobjecthelper");
-const { userAuthentication } = require("../../../helpers/authentication");
+const { userAuthentication, getLoggedInUser } = require("../../../helpers/authentication");
 
-router.get('/',  userAuthentication, async(req, res) => {
+router.get('/',  userAuthentication, getLoggedInUser, async(req, res) => {
     let products = await ProductModel.find({IsDelete: false});
     return res.render('main/admin/review/index', {
         layout: 'admin/base',

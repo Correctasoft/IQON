@@ -6,9 +6,9 @@ const customerModel =  require('../../../models/Customer');
 const categoryModel =  require('../../../models/Category');
 const productModel =  require('../../../models/Product');
 const { multipleMongooseToObj, mongooseToObj } = require("../../../helpers/mongoobjecthelper");
-const { userAuthentication } = require("../../../helpers/authentication");
+const { userAuthentication, getLoggedInUser } = require("../../../helpers/authentication");
 
-router.get('/', userAuthentication, async (req, res) => {
+router.get('/', userAuthentication, getLoggedInUser , async (req, res) => {
     let orders =  multipleMongooseToObj(await salesOrderModel.find({
         Date:{
             $gte: new Date().setHours(0,0,0,0),

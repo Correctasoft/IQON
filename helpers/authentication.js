@@ -17,4 +17,11 @@ module.exports = {
             return res.redirect('/admin/login');
         }
     },
+
+    getLoggedInUser(req, res, next) {
+        if (req.session && req.session.loggedInUser) {
+            res.locals.user = req.session.loggedInUser;
+        }
+        return next();
+    }
 };

@@ -6,9 +6,9 @@ const salesOrderModel =  require('../../../models/SalesOrder');
 const {
   multipleMongooseToObj, mongooseToObj
 } = require("../../../helpers/mongoobjecthelper");
-const { userAuthentication } = require("../../../helpers/authentication");
+const { userAuthentication  , getLoggedInUser} = require("../../../helpers/authentication");
 
-router.get('/',userAuthentication, async (req, res) => {
+router.get('/',userAuthentication , getLoggedInUser, async (req, res) => {
     let orders =  multipleMongooseToObj(await salesOrderModel.find({}).sort({Date: -1}));
     return res.render('main/admin/order', {
         layout: 'admin/base',
@@ -17,7 +17,7 @@ router.get('/',userAuthentication, async (req, res) => {
     });
 });
 
-router.get('/details/:orderId', async (req, res) => {
+router.get('/details/:orderId', userAuthentication , getLoggedInUser, async (req, res) => {
     let items = await orderedItemModel.find({Order: req.params.orderId}).populate({
       path: 'Product',
       model: productModel

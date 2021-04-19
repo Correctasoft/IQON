@@ -26,7 +26,6 @@ router.post('/login', async (req, res) => {
                         type: 'user'
                     }
                     
-                    
                     // generate an access token
                     userObj.accessToken = jwt.sign({ Email: userObj.Email, Name: userObj.Name }, accessTokenSecret, { expiresIn: '30m' });
                     
