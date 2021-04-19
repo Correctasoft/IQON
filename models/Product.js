@@ -18,7 +18,8 @@ const ProductSchema = new Schema({
   },
   Slug : {
     type :String,
-    slug: ['Name','Code']
+    slug: 'Code',
+    unique: true 
   },
   Description: {
     type: String,

@@ -109,6 +109,7 @@ const customer = require("./routes/PagesController/admin/customer");
 const order = require("./routes/PagesController/admin/order");
 const review = require("./routes/PagesController/admin/review");
 const auth = require("./routes/PagesController/admin/authentication");
+const quickfix = require("./routes/PagesController/admin/quickfix");
 
 //admin api routes
 const categoryAPI = require("./routes/APIController/admin/category");
@@ -133,7 +134,6 @@ app.use('/api/cart', webcartAPI);
 app.use('/api/shop', shopAPI);
 
 
-
 //admin routes
 app.use('/admin', pages);
 app.use('/admin/category', category);
@@ -144,6 +144,7 @@ app.use('/admin/customer', customer);
 app.use('/admin/order', order);
 app.use('/admin/review', review);
 app.use('/admin/auth', auth);
+app.use('/admin/quickfix', quickfix);
 
 
 app.use('/admin/api/categories', categoryAPI);
