@@ -253,7 +253,7 @@ router.put("/", (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  if (req.body.ProductImage.includes(';base64,') && req.body.ProductImage.includes(';base64,')) {
+  if (req.body.ProductImage1 && req.body.ProductImage && req.body.ProductImage.includes(';base64,') && req.body.ProductImage1.includes(';base64,')) {
     let base64Image = req.body.ProductImage.split(';base64,').pop();
     let image1type = req.body.ProductImage.split(';base64,')[0];
     let image2type = req.body.ProductImage1.split(';base64,')[0];
@@ -300,11 +300,6 @@ router.post("/", async (req, res) => {
         fs.unlink('image.png', (err => {
           if (err) console.log(err);
           else {
-            res.writeHead(200, {
-              "Content-Type": "image/png",
-              "Content-Length": img.length,
-            });
-            res.end(img);
           }
         }));
         res.json({
