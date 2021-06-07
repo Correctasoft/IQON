@@ -1,0 +1,77 @@
+<style>
+    .outlet-image{
+        height: 100px;
+        width: 200px;
+    }
+
+    #OutletGrid_dialogEdit_wrapper{
+        width: 75% !important;
+    }
+</style>
+<script src="/view-js/admin/outlet-view.js" type="text/javascript"> </script>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            {{title}}
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="box box-info">
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <div class="row mx-0">
+                                <div id="OutletGrid"></div>
+                                <div id="OutletTemplate" style="display: none">
+                                    <b>Outlet</b>
+                                    <form>
+                                        <div class="row">
+                                            <div class="form-group p-3 col-lg-6">
+                                                <label for="outletname">City</label>
+                                                <input id="outletCity" name="outletCity" value="\{{: City}}"
+                                                    class="form-control" placeholder="City" />
+                                            </div>
+                                            <div class="form-group p-3 col-lg-6">
+                                                <label for="outletPhone">Phone</label>
+                                                <input type="text" class="form-control" id="outletPhone" name="outletPhone" value="\{{: Phone}}"/>
+                                            </div>
+                                            <div class="form-group p-3 col--lg12">
+                                                <label for="outletPhone">Address</label>
+                                                <textarea class="form-control" name="outletAddress" id="outletAddress" cols="10" rows="4"></textarea>
+                                            </div>
+                                            <div class="form-group p-3 col-lg-6">
+                                                <label for="outletname">Timing</label>
+                                                <input id="outletTiming" name="outletTiming" value="\{{: Timing}}"
+                                                    class="form-control" placeholder="Timing" />
+                                            </div>
+                                            <div class="form-group p-3 col-lg-6">
+                                                <label for="outletwidth">Google Map Url</label>
+                                                <input type="text" id="outletGoogleMapUrl" class="form-control" name="outletGoogleMapUrl" value="\{{: GoogleMapUrl}}" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <table cellspacing="10">
+                                        <tr style="display: none;">
+                                            <td style="text-align: right;">id
+                                            </td>
+                                            <td style="text-align: left">
+                                                <input id="outletId" name="outlet_id" value="\{{: _id}}"
+                                                    disabled="disabled" class="e-field e-ejinputtext valid e-disable"
+                                                    style="text-align: right; width: 116px; height: 28px" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div><!-- /.table-responsive -->
+                        </><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+    </section><!-- /.content -->
+</div>

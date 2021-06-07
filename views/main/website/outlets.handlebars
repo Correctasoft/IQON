@@ -1,0 +1,72 @@
+<style>
+	#mapframe{
+		width: 100%;
+	}
+	.outlet-logo{
+		height: 200px !important;
+	}
+	article{
+		padding: 2rem;
+		border: 1px solid gray;
+		border-radius: 10px;
+		margin-bottom: 3rem;
+		transition: all linear 0.3s;
+	}
+	article:hover{
+		transform: scale(1.05);
+	}
+	.read-more{
+		cursor: pointer;
+	}
+</style>
+
+<main class="main">
+	<div class="page-header text-center" style="padding: 0">
+		<div class="container">
+			{{!-- <h1 class="page-title">Outlets <span>IQON</span></h1> --}}
+			<iframe id='mapframe' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.561952825401!2d90.35775071454339!3d23.762995384583146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c10a7db74aa7%3A0x7cc695dd267df37d!2sIQON!5e0!3m2!1sen!2sbd!4v1623084885800!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+		</div><!-- End .container -->
+	</div><!-- End .page-header -->
+
+	<div class="page-content mt-4">
+		<div class="container mt-2">
+			{{#each outlets}}
+				<article class="entry entry-list">
+					<div class="row align-items-center">
+						<div class="col-md-4">
+							<figure class="entry-media">
+								<a>
+									<img class="outlet-logo" src="/logo.png">
+								</a>
+							</figure><!-- End .entry-media -->
+						</div><!-- End .col-md-4 -->
+
+						<div class="col-md-8">
+							<div class="entry-body">
+								<h2 class="entry-title">
+									<a onclick="changeMap('{{GoogleMapUrl}}')">{{City}}</a>
+								</h2><!-- End .entry-title -->
+
+								<div class="entry-content">
+									<p>{{Address}}</p>
+									<p>{{Phone}}</p>
+									<a class="read-more" onclick="changeMap('{{GoogleMapUrl}}')">Get Location</a>
+								</div><!-- End .entry-content -->
+							</div><!-- End .entry-body -->
+						</div><!-- End .col-md-8 -->
+					</div><!-- End .row -->
+				</article><!-- End .entry -->
+			{{/each}}
+		</div>
+	</div><!-- End .page-content -->
+</main><!-- End .main -->
+
+
+<script>
+	function changeMap(location){
+		document.getElementById('mapframe').src = location;
+		document.getElementById("mapframe").scrollIntoView();
+	}
+
+	$('.read-more')[0].click();
+</script>

@@ -3,6 +3,7 @@ const router = express.Router();
 const bannerModel =  require('../../../models/Banner');
 const categoryModel =  require('../../../models/Category');
 const productModel =  require('../../../models/Product');
+const outletModel =  require('../../../models/Outlet');
 const { multipleMongooseToObj, mongooseToObj } = require("../../../helpers/mongoobjecthelper");
 const { getCommonData ,getLoggedInCustomer, requireCustomerLogin } = require('../../../middleware/web');
 function getErrorMessage(req){
@@ -88,6 +89,15 @@ router.get('/about', getCommonData, (req, res)=>{
     return res.render('main/website/about', {
         layout: 'website/base',
         title: 'About',
+    });
+});
+
+router.get('/store-locator', getCommonData, async (req, res)=>{
+    let outlets = await outletModel.find({});
+    return res.render('main/website/outlets', {
+        layout: 'website/base',
+        title: 'Stores',
+        outlets :multipleMongooseToObj(outlets),
     });
 });
 
