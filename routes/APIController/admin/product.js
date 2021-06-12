@@ -2,6 +2,7 @@ const fs = require("fs");
 const express = require("express");
 const router = express.Router();
 const CategoryModel = require("../../../models/Category");
+const SaleCategoryModel = require("../../../models/SaleCategory");
 const ProductModel = require("../../../models/Product");
 const {
   multipleMongooseToObj
@@ -33,14 +34,18 @@ router.get("/", (req, res) => {
           $regex: `${substring}`,
           $options: "i",
         }
-      }, ],
+      },],
     }).select({
-      MainImage : 0,
-      SecondaryImage : 0,
+      MainImage: 0,
+      SecondaryImage: 0,
     }).
-    populate({
+      populate({
         path: 'Category',
         model: CategoryModel
+      }
+      ).populate({
+        path: 'SaleCategory',
+        model: SaleCategoryModel
       })
       .then((products) => {
         res.json({
@@ -56,38 +61,38 @@ router.get("/", (req, res) => {
       let sortingParameters = [];
       sortingParameters = req.query.$orderby.split(" ");
       ProductModel.count({
-          IsDelete: false,
-          $or: [{
-            Code: {
-              $regex: ".*" + substring + ".*",
-              $options: "i",
-            },
-            Name: {
-              $regex: ".*" + substring + ".*",
-              $options: "i",
-            }
-          }, ],
-        },
+        IsDelete: false,
+        $or: [{
+          Code: {
+            $regex: ".*" + substring + ".*",
+            $options: "i",
+          },
+          Name: {
+            $regex: ".*" + substring + ".*",
+            $options: "i",
+          }
+        },],
+      },
         function (err, count) {
           if (err) {
             console.log(err);
           } else {
             ProductModel.find({
-                IsDelete: false,
-                $or: [{
-                  Code: {
-                    $regex: ".*" + substring + ".*",
-                    $options: "i",
-                  },
-                  Name: {
-                    $regex: ".*" + substring + ".*",
-                    $options: "i",
-                  }
-                }, ],
-              }).select({
-                MainImage : 0,
-                SecondaryImage : 0,
-              })
+              IsDelete: false,
+              $or: [{
+                Code: {
+                  $regex: ".*" + substring + ".*",
+                  $options: "i",
+                },
+                Name: {
+                  $regex: ".*" + substring + ".*",
+                  $options: "i",
+                }
+              },],
+            }).select({
+              MainImage: 0,
+              SecondaryImage: 0,
+            })
               .sort([
                 [sortingParameters[0], getOrdering(sortingParameters[1])]
               ])
@@ -96,6 +101,9 @@ router.get("/", (req, res) => {
               .populate({
                 path: 'Category',
                 model: CategoryModel
+              }).populate({
+                path: 'SaleCategory',
+                model: SaleCategoryModel
               })
               .then((products) => {
                 res.json({
@@ -110,44 +118,47 @@ router.get("/", (req, res) => {
         });
     } else {
       ProductModel.count({
-          IsDelete: false,
-          $or: [{
-            Code: {
-              $regex: ".*" + substring + ".*",
-              $options: "i",
-            },
-            Name: {
-              $regex: ".*" + substring + ".*",
-              $options: "i",
-            }
-          }, ],
-        },
+        IsDelete: false,
+        $or: [{
+          Code: {
+            $regex: ".*" + substring + ".*",
+            $options: "i",
+          },
+          Name: {
+            $regex: ".*" + substring + ".*",
+            $options: "i",
+          }
+        },],
+      },
         function (err, count) {
           if (err) {
             console.log(err);
           } else {
             ProductModel.find({
-                IsDelete: false,
-                $or: [{
-                  Code: {
-                    $regex: ".*" + substring + ".*",
-                    $options: "i",
-                  },
-                  Name: {
-                    $regex: ".*" + substring + ".*",
-                    $options: "i",
-                  }
-                }, ],
-              })
+              IsDelete: false,
+              $or: [{
+                Code: {
+                  $regex: ".*" + substring + ".*",
+                  $options: "i",
+                },
+                Name: {
+                  $regex: ".*" + substring + ".*",
+                  $options: "i",
+                }
+              },],
+            })
               .select({
-                MainImage : 0,
-                SecondaryImage : 0,
+                MainImage: 0,
+                SecondaryImage: 0,
               })
               .limit(parseInt(req.query.$top))
               .skip(parseInt(req.query.$skip))
               .populate({
                 path: 'Category',
                 model: CategoryModel
+              }).populate({
+                path: 'SaleCategory',
+                model: SaleCategoryModel
               })
               .then((products) => {
                 res.json({
@@ -189,31 +200,32 @@ router.put("/", (req, res) => {
         let img2 = fs.readFileSync('image.png');
         let encode_image2 = img2.toString('base64');
         ProductModel.updateOne({
-            _id: req.body.Product_id,
-          }, {
-            $set: {
-              Name: req.body.ProductName,
-              Code: req.body.ProductCode,
-              Active: req.body.ProductActive,
-              Description: req.body.ProductDescription,
-              SellingPrice: req.body.ProductSellingPrice,
-              DiscountedPrice: req.body.ProductDiscountedPrice,
-              StockAvailable: req.body.ProductStockAvailable,
-              MainImage: image1type + ';base64,' + encode_image1,
-              SecondaryImage: image2type + ';base64,' + encode_image2,
-              IsFeatured: req.body.ProductFeatured,
-              Category: req.body.ProductCategory,
-              Size: req.body.ProductSize,
-              Color: req.body.ProductColor,
-              Tags: req.body.ProductTags,
-              UpdationDate: Date.now(),
-              //UpdatedBy: req.user._id
-            },
-          })
+          _id: req.body.Product_id,
+        }, {
+          $set: {
+            Name: req.body.ProductName,
+            Code: req.body.ProductCode,
+            Active: req.body.ProductActive,
+            Description: req.body.ProductDescription,
+            SellingPrice: req.body.ProductSellingPrice,
+            DiscountedPrice: req.body.ProductDiscountedPrice,
+            StockAvailable: req.body.ProductStockAvailable,
+            MainImage: image1type + ';base64,' + encode_image1,
+            SecondaryImage: image2type + ';base64,' + encode_image2,
+            IsFeatured: req.body.ProductFeatured,
+            Category: req.body.ProductCategory,
+            SaleCategory : req.body.ProductSaleCategory,
+            Size: req.body.ProductSize,
+            Color: req.body.ProductColor,
+            Tags: req.body.ProductTags,
+            UpdationDate: Date.now(),
+            //UpdatedBy: req.user._id
+          },
+        })
           .then((_) => {
             fs.unlink('image.png', (err => {
               if (err) console.log(err);
-              
+
             }));
             res.json({
               status: 200,
@@ -224,25 +236,26 @@ router.put("/", (req, res) => {
     })
   } else {
     ProductModel.updateOne({
-        _id: req.body.Product_id,
-      }, {
-        $set: {
-          Name: req.body.ProductName,
-          Code: req.body.ProductCode,
-          Active: req.body.ProductActive,
-          Description: req.body.ProductDescription,
-          SellingPrice: req.body.ProductSellingPrice,
-          DiscountedPrice: req.body.ProductDiscountedPrice,
-          StockAvailable: req.body.ProductStockAvailable,
-          IsFeatured: req.body.ProductFeatured,
-          Category: req.body.ProductCategory,
-          Size: req.body.ProductSize,
-          Color: req.body.ProductColor,
-          Tags: req.body.ProductTags,
-          UpdationDate: Date.now(),
-          //UpdatedBy: req.user._id
-        },
-      })
+      _id: req.body.Product_id,
+    }, {
+      $set: {
+        Name: req.body.ProductName,
+        Code: req.body.ProductCode,
+        Active: req.body.ProductActive,
+        Description: req.body.ProductDescription,
+        SellingPrice: req.body.ProductSellingPrice,
+        DiscountedPrice: req.body.ProductDiscountedPrice,
+        StockAvailable: req.body.ProductStockAvailable,
+        IsFeatured: req.body.ProductFeatured,
+        Category: req.body.ProductCategory,
+        SaleCategory : req.body.ProductSaleCategory,
+        Size: req.body.ProductSize,
+        Color: req.body.ProductColor,
+        Tags: req.body.ProductTags,
+        UpdationDate: Date.now(),
+        //UpdatedBy: req.user._id
+      },
+    })
       .then((_) => {
         res.json({
           status: 200,
@@ -288,6 +301,7 @@ router.post("/", async (req, res) => {
           SecondaryImage: image2type + ';base64,' + encode_image2,
           IsFeatured: req.body.ProductFeatured,
           Category: req.body.ProductCategory,
+          SaleCategory : req.body.ProductSaleCategory,
           Size: req.body.ProductSize,
           Color: req.body.ProductColor,
           Tags: req.body.ProductTags,
@@ -318,6 +332,7 @@ router.post("/", async (req, res) => {
       StockAvailable: req.body.ProductStockAvailable,
       IsFeatured: req.body.ProductFeatured,
       Category: req.body.ProductCategory,
+      SaleCategory : req.body.ProductSaleCategory,
       Size: req.body.ProductSize,
       Color: req.body.ProductColor,
       Tags: req.body.ProductTags,
@@ -336,27 +351,27 @@ router.post("/", async (req, res) => {
 router.delete("/:id", (req, res) => {
 
   ProductModel.updateOne({
-      _id: req.params.id
-    }, {
-      $set: {
-        IsDelete: true,
-      },
-    }).then((_) => {
-      res.json({
-        status: 200,
-      });
-    })
+    _id: req.params.id
+  }, {
+    $set: {
+      IsDelete: true,
+    },
+  }).then((_) => {
+    res.json({
+      status: 200,
+    });
+  })
     .catch((err) => console.log(err));
 });
 
 router.get('/parent-categories', (req, res) => {
   CategoryModel.find({
-      Parent: null,
-      IsDelete: false
-    }).select({
-      "Name": 1,
-      "_id": 1
-    })
+    Parent: null,
+    IsDelete: false
+  }).select({
+    "Name": 1,
+    "_id": 1
+  })
     .then((categories) => {
       res.json({
         Items: categories,
@@ -370,12 +385,12 @@ router.get('/parent-categories', (req, res) => {
 
 router.get('/mini-products', (req, res) => {
   ProductModel.find({
-      IsDelete: false
-    }).select({
-      "Name": 1,
-      "Code": 1,
-      "_id": 1
-    })
+    IsDelete: false
+  }).select({
+    "Name": 1,
+    "Code": 1,
+    "_id": 1
+  })
     .then((products) => {
       res.json({
         Items: products,
@@ -392,11 +407,11 @@ router.get('/mainimage/:id', (req, res) => {
   let width = parseInt(req.query.width);
   let quantity = parseInt(req.query.quality);
   ProductModel.findOne({
-      IsDelete: false,
-      _id: req.params.id
-    }).select({
-      "MainImage": 1
-    })
+    IsDelete: false,
+    _id: req.params.id
+  }).select({
+    "MainImage": 1
+  })
     .then((product) => {
       let base64Image = product.MainImage.split(';base64,').pop();
       fs.writeFile(req.params.id + 'image1.png', base64Image, {
@@ -432,11 +447,11 @@ router.get('/seondaryimage/:id', (req, res) => {
   let width = parseInt(req.query.width);
   let quantity = parseInt(req.query.quality);
   ProductModel.findOne({
-      IsDelete: false,
-      _id: req.params.id
-    }).select({
-      "SecondaryImage": 1
-    })
+    IsDelete: false,
+    _id: req.params.id
+  }).select({
+    "SecondaryImage": 1
+  })
     .then((product) => {
       let base64Image = product.SecondaryImage.split(';base64,').pop();
       fs.writeFile(req.params.id + 'image2.png', base64Image, {

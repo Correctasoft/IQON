@@ -1,4 +1,5 @@
 var global_Product_data = null;
+var global_sale_category_data = null;
 
 function gertProduct_image() {
   var reader = new FileReader();
@@ -30,7 +31,16 @@ let populateParentProductDropDown = function (data) {
   });
   // $("#ProductParent").ejDropDownList({width: 100});
 };
-
+let populateSaleCategoryDropDown = function (data) {
+  $("#ProductSaleCategory").ejDropDownList({
+    dataSource: data.Items,
+    watermarkText: "Select Sale Category",
+    fields: { text: "Name", value: "_id" },
+    enableFilterSearch: true,
+    width : "100%"
+  });
+  // $("#ProductParent").ejDropDownList({width: 100});
+};
 let getCategories = function () {
   $.ajax({
     url: "/admin/api/categories/mini-categories",
@@ -44,10 +54,23 @@ let getCategories = function () {
   });
 }
 
+let getSaleCategories = function () {
+  $.ajax({
+    url: "/admin/api/salecategories",
+    type: "GET",
+    success: function (data) {
+      global_sale_category_data = data;
+    },
+    error: function (error) {
+      console.log(error);
+    },
+  });
+}
+
 //#region grid populate
 $(function () {
   getCategories();
-
+  getSaleCategories();
   var ProductdataManager = ej.DataManager({
     url: "/admin/api/products",
     adaptor: new ej.WebApiAdaptor(), //"UrlAdaptor"
@@ -131,6 +154,12 @@ $(function () {
         width: 90,
       },
       {
+        field: "Sale Category.Name",
+        headerText: "SaleCategory",
+        textAlign: ej.TextAlign.Left,
+        width: 90,
+      },
+      {
         field: "SellingPrice",
         headerText: "Selling Price",
         textAlign: ej.TextAlign.Right,
@@ -174,15 +203,21 @@ let completeProduct = function (args) {
     document.getElementById('Product_image').src = "/admin/api/products/mainimage/"+args.rowData._id+"?height=150&width=150&quality=70";
     document.getElementById('Product_image1').src = "/admin/api/products/seondaryimage/"+args.rowData._id+"?height=150&width=150&quality=70";
     populateParentProductDropDown(global_Product_data);
+    populateSaleCategoryDropDown(global_sale_category_data);
     var obj = $("#ProductCategory").data("ejDropDownList");
+    var obj1 = $("#ProductSaleCategory").data("ejDropDownList");
     if (args.rowData.Category) {
       obj.selectItemByValue(args.rowData.Category._id);
+    }
+    if (args.rowData.SaleCategory) {
+      obj1.selectItemByValue(args.rowData.SaleCategory._id);
     }
   }
   else if (args.requestType == "add") {
     $('#ProductDescription').richText();
     document.getElementById("ProductFeatured").checked = false;
     populateParentProductDropDown(global_Product_data);
+    populateSaleCategoryDropDown(global_sale_category_data);
   }
   if (args.requestType == "save") {
     $("#ProductGrid").ejGrid("refreshContent");

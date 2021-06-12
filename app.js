@@ -102,6 +102,7 @@ const shopAPI = require("./routes/APIController/website/shop");
 //admin routes
 const pages = require("./routes/PagesController/admin/pages");
 const category = require("./routes/PagesController/admin/category");
+const salecategory = require("./routes/PagesController/admin/salecategory");
 const banner = require("./routes/PagesController/admin/banner");
 const outlet = require("./routes/PagesController/admin/outlet");
 const product = require("./routes/PagesController/admin/product");
@@ -114,6 +115,7 @@ const quickfix = require("./routes/PagesController/admin/quickfix");
 
 //admin api routes
 const categoryAPI = require("./routes/APIController/admin/category");
+const salecategoryAPI = require("./routes/APIController/admin/salecategory");
 const bannerAPI = require("./routes/APIController/admin/banner");
 const outletAPI = require("./routes/APIController/admin/outlet");
 const productAPI = require("./routes/APIController/admin/product");
@@ -139,6 +141,7 @@ app.use('/api/shop', shopAPI);
 //admin routes
 app.use('/admin', pages);
 app.use('/admin/category', category);
+app.use('/admin/salecategory', salecategory);
 app.use('/admin/banner', banner);
 app.use('/admin/outlet', outlet);
 app.use('/admin/product', product);
@@ -151,6 +154,7 @@ app.use('/admin/quickfix', quickfix);
 
 
 app.use('/admin/api/categories', categoryAPI);
+app.use('/admin/api/salecategories', salecategoryAPI);
 app.use('/admin/api/banners', bannerAPI);
 app.use('/admin/api/outlets', outletAPI);
 app.use('/admin/api/products', productAPI);

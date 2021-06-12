@@ -65,6 +65,11 @@ const ProductSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Category'
   },
+  SaleCategory: {
+    type: Schema.Types.ObjectId,
+    ref: 'SaleCategory',
+    default : null
+  },
   InsertionDate: {
     type: Date,
     default: Date.now(),
