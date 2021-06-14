@@ -4,6 +4,7 @@ const bannerModel =  require('../../../models/Banner');
 const categoryModel =  require('../../../models/Category');
 const productModel =  require('../../../models/Product');
 const outletModel =  require('../../../models/Outlet');
+const saleCategoryModel =  require('../../../models/SaleCategory');
 const { multipleMongooseToObj, mongooseToObj } = require("../../../helpers/mongoobjecthelper");
 const { getCommonData ,getLoggedInCustomer, requireCustomerLogin } = require('../../../middleware/web');
 function getErrorMessage(req){
@@ -70,6 +71,10 @@ router.get('/', getLoggedInCustomer, async (req, res) => {
             $in: idsCategoryUnderWomen
         }
     }).sort({InsertionDate:-1}).limit(12));
+
+    let saleCategories = multipleMongooseToObj(await saleCategoryModel.find({
+        IsDelete: false,
+    }));
     
     return res.render('main/website/home', {
         layout: 'website/base',
@@ -81,6 +86,7 @@ router.get('/', getLoggedInCustomer, async (req, res) => {
         featuredProductsMen,
         newArivalMen,
         newArivalWomen,
+        saleCategories,
         message : getErrorMessage(req),
     });
 });

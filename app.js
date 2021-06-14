@@ -93,10 +93,12 @@ const checkout = require("./routes/PagesController/website/checkout");
 const webauth = require("./routes/PagesController/website/authentication");
 const webcustomer = require("./routes/PagesController/website/customer");
 const shop = require("./routes/PagesController/website/shop");
+const sale = require("./routes/PagesController/website/sale");
 
 //website apis
 const webcartAPI = require("./routes/APIController/website/cart");
 const shopAPI = require("./routes/APIController/website/shop");
+const saleAPI = require("./routes/APIController/website/sale");
 
 
 //admin routes
@@ -132,10 +134,12 @@ app.use('/checkout', checkout);
 app.use('/auth', webauth);
 app.use('/customer', webcustomer);
 app.use('/shop', shop);
+app.use('/sale', sale);
 
 
 app.use('/api/cart', webcartAPI);
 app.use('/api/shop', shopAPI);
+app.use('/api/sale', saleAPI);
 
 
 //admin routes

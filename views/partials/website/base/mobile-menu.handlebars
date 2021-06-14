@@ -59,6 +59,11 @@
                         {{/each}}
                     </ul>
                 </li>
+                {{#each saleCategories}}
+                <li>
+                    <a href="/sale/{{Slug}}">{{Name}}</a>
+                </li>
+                {{/each}}
                 {{#if user}}
                 <li>
                     <a href="#">{{user.Name}}</a>

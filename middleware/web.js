@@ -1,4 +1,5 @@
 const { multipleMongooseToObj } = require("../helpers/mongoobjecthelper");
+const saleCategoryModel =  require('../models/SaleCategory');
 const categoryModel =  require('../models/Category');
 
 function getLoggedInCustomer(req, res, next) {
@@ -42,6 +43,10 @@ async function getCommonData(req, res, next) {
             IsDelete: false,
         }));
     }
+    let saleCategories = multipleMongooseToObj(await saleCategoryModel.find({
+        IsDelete: false,
+    }));
+    res.locals.saleCategories = saleCategories;
     res.locals.categoriesFroMenu = parentCategories;
     return next();
 }
