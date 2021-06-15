@@ -212,7 +212,7 @@
             </div><!-- End .megamenu -->
         </li> --}}
         <li>
-            <a href="/">Home</a>
+            <a href="/" style="padding-left: 0;">Home</a>
         </li>
         <li>
             <a href="/shop">Shop</a>
@@ -222,11 +222,11 @@
 
             <div class="megamenu megamenu-md">
                 <div class="row no-gutters">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div class="menu-col">
                             <div class="row">      
                                 {{#each categoriesFroMenu}}
-                                <div class="col-md-6">
+                                <div class="col-md-4 col-lg-4 mb-2">
                                     <div class="menu-title">{{Name}}</div>
                                     <!-- End .menu-title -->
                                     {{#if children}}
@@ -241,22 +241,7 @@
                               
                             </div><!-- End .row -->
                         </div><!-- End .menu-col -->
-                    </div><!-- End .col-md-8 -->
-
-                    <div class="col-md-4">
-                        <div class="banner banner-overlay">
-                            {{#each categoriesFroMenu}}
-                                <a href="/shop/category/{{Slug}}" class="banner banner-menu">
-                                    <img src="{{Image}}" alt="Banner">
-
-                                    <div class="banner-content banner-content-top">
-                                        <div class="banner-title text-white">{{Name}}
-                                        </div>
-                                    </div><!-- End .banner-content -->
-                                </a>
-                            {{/each}}
-                        </div><!-- End .banner banner-overlay -->
-                    </div><!-- End .col-md-4 -->
+                    </div><!-- End .col-md-12 -->
                 </div><!-- End .row -->
             </div><!-- End .megamenu megamenu-md -->
         </li>
@@ -266,22 +251,35 @@
 
             <div class="megamenu megamenu-md">
                 <div class="row no-gutters">
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                         <div class="menu-col">
                             <div class="row">      
                                     <!-- End .menu-title -->
                                     {{#if children}}
                                     <ul style="column-count: 3">
                                         {{#each children}}
-                                        
                                             <li><a href="/shop/category/{{Slug}}">{{Name}}</a></li>
-                                        
                                         {{/each}}
                                     </ul>
                                     {{/if}}
                             </div><!-- End .row -->
                         </div><!-- End .menu-col -->
                     </div><!-- End .col-md-8 -->
+
+                    <div class="col-md-3">
+                        <div class="banner banner-overlay">
+                            
+                                <a href="/shop/category/{{Slug}}" class="banner banner-menu">
+                                    <img src="{{Image}}" alt="Banner">
+
+                                    <div class="banner-content banner-content-top">
+                                        <div class="banner-title text-white">{{Name}}
+                                        </div>
+                                    </div><!-- End .banner-content -->
+                                </a>
+                            
+                        </div><!-- End .banner banner-overlay -->
+                    </div><!-- End .col-md-4 -->
                 </div><!-- End .row -->
             </div><!-- End .megamenu megamenu-md -->
         </li>
