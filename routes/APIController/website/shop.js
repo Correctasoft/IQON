@@ -119,9 +119,7 @@ router.post('/search-products',  async (req, res) => {
         pages: Math.ceil(total_products / product_per_page),
         current: page,
         itemsperpage: product_per_page,
-    });
-    
-    
+    }); 
 });
 
 module.exports = router;

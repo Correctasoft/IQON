@@ -43,7 +43,7 @@
                         <li><a href="coming-soon.html">Coming Soon</a></li>
                     </ul>
                 </li> --}}
-                <li>
+                {{!-- <li>
                     <a href="/shop">Category</a>
 
                     <ul>
@@ -58,7 +58,12 @@
                         </li>
                         {{/each}}
                     </ul>
+                </li> --}}
+                {{#each categoriesFroMenu}}
+                <li>
+                    <a href="/category/{{Slug}}">{{Name}}</a>
                 </li>
+                {{/each}}
                 {{#each saleCategories}}
                 <li>
                     <a href="/sale/{{Slug}}">{{Name}}</a>

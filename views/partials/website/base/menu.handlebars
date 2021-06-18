@@ -217,7 +217,12 @@
         <li>
             <a href="/shop">Shop</a>
         </li>
+        {{#each categoriesFroMenu}}
         <li>
+            <a href="/category/{{Slug}}">{{Name}}</a>
+        </li>
+        {{/each}}
+        {{!-- <li>
             <a href="#" class="sf-with-ul">Category</a>
 
             <div class="megamenu megamenu-md">
@@ -244,9 +249,9 @@
                     </div><!-- End .col-md-12 -->
                 </div><!-- End .row -->
             </div><!-- End .megamenu megamenu-md -->
-        </li>
+        </li> --}}
         {{#each categoriesFroMenu}}
-        <li>
+        {{!-- <li>
             <a href="#" class="sf-with-ul">{{Name}}</a>
 
             <div class="megamenu megamenu-md">
@@ -282,7 +287,7 @@
                     </div><!-- End .col-md-4 -->
                 </div><!-- End .row -->
             </div><!-- End .megamenu megamenu-md -->
-        </li>
+        </li> --}}
         {{/each}}
         {{#each saleCategories}}
         <li>

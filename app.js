@@ -87,6 +87,7 @@ app.use(methodOverrride("_method"));
 //Load Routes
 //website pages
 const home = require("./routes/PagesController/website/home");
+const categoryWeb = require("./routes/PagesController/website/category");
 const web_product = require("./routes/PagesController/website/product");
 const cart = require("./routes/PagesController/website/cart");
 const checkout = require("./routes/PagesController/website/checkout");
@@ -128,6 +129,7 @@ const reviewAPI = require("./routes/APIController/admin/review");
 
 //website routes
 app.use('/', home);
+app.use('/category', categoryWeb);
 app.use('/product', web_product);
 app.use('/cart', cart);
 app.use('/checkout', checkout);

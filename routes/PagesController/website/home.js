@@ -26,51 +26,54 @@ function getErrorMessage(req){
 router.get('/', getLoggedInCustomer, async (req, res) => {
     let banners = await bannerModel.find({}).limit(3).sort({Order: 1});
     let parentCategories = multipleMongooseToObj(await categoryModel.find({Parent: null, IsDelete: false}));
-    for(let i=0; i<parentCategories.length; i++){
-        parentCategories[i].children = multipleMongooseToObj(await categoryModel.find({
-            Parent: parentCategories[i]._id,
-            IsDelete: false,
-        }));
-    }
-    let categoryUnderMen = parentCategories.filter(category=>{
-        return category.Name == "Men";
-    })[0].children;
+    let categoriesFroMenu = [... parentCategories];
+    parentCategories = parentCategories.filter((x)=> {return x.IsFeatured == true});
+    // for(let i=0; i<parentCategories.length; i++){
+    //     parentCategories[i].children = multipleMongooseToObj(await categoryModel.find({
+    //         Parent: parentCategories[i]._id,
+    //         IsDelete: false,
+    //     }));
+    // }
 
-    let idsCategoryUnderMen = categoryUnderMen.map(category=> {return category._id});
-    let featuredProductsMen= multipleMongooseToObj(await productModel.find({
-        IsFeatured: true,
-        IsDelete: false,
-        Category:{
-            $in: idsCategoryUnderMen
-        }
-    }));
+    // let categoryUnderMen = parentCategories.filter(category=>{
+    //     return category.Name == "Men";
+    // })[0].children;
 
-    let categoryUnderWomen = parentCategories.filter(category=>{
-        return category.Name == "Women";
-    })[0].children;
+    // let idsCategoryUnderMen = categoryUnderMen.map(category=> {return category._id});
+    // let featuredProductsMen= multipleMongooseToObj(await productModel.find({
+    //     IsFeatured: true,
+    //     IsDelete: false,
+    //     Category:{
+    //         $in: idsCategoryUnderMen
+    //     }
+    // }));
 
-    let idsCategoryUnderWomen = categoryUnderWomen.map(category=> {return category._id});
-    let featuredProductsWomen= multipleMongooseToObj(await productModel.find({
-        IsFeatured: true,
-        IsDelete: false,
-        Category:{
-            $in: idsCategoryUnderWomen
-        }
-    }));
+    // let categoryUnderWomen = parentCategories.filter(category=>{
+    //     return category.Name == "Women";
+    // })[0].children;
 
-    let newArivalMen = multipleMongooseToObj(await productModel.find({
-        IsDelete: false,
-        Category:{
-            $in: idsCategoryUnderMen
-        }
-    }).sort({InsertionDate:-1}).limit(12));
+    // let idsCategoryUnderWomen = categoryUnderWomen.map(category=> {return category._id});
+    // let featuredProductsWomen= multipleMongooseToObj(await productModel.find({
+    //     IsFeatured: true,
+    //     IsDelete: false,
+    //     Category:{
+    //         $in: idsCategoryUnderWomen
+    //     }
+    // }));
 
-    let newArivalWomen = multipleMongooseToObj(await productModel.find({
-        IsDelete: false,
-        Category:{
-            $in: idsCategoryUnderWomen
-        }
-    }).sort({InsertionDate:-1}).limit(12));
+    // let newArivalMen = multipleMongooseToObj(await productModel.find({
+    //     IsDelete: false,
+    //     Category:{
+    //         $in: idsCategoryUnderMen
+    //     }
+    // }).sort({InsertionDate:-1}).limit(12));
+
+    // let newArivalWomen = multipleMongooseToObj(await productModel.find({
+    //     IsDelete: false,
+    //     Category:{
+    //         $in: idsCategoryUnderWomen
+    //     }
+    // }).sort({InsertionDate:-1}).limit(12));
 
     let saleCategories = multipleMongooseToObj(await saleCategoryModel.find({
         IsDelete: false,
@@ -80,12 +83,12 @@ router.get('/', getLoggedInCustomer, async (req, res) => {
         layout: 'website/base',
         title: 'Home',
         banners: multipleMongooseToObj(banners),
-        categoriesFroMenu :parentCategories,
+        categoriesFroMenu :categoriesFroMenu,
         parentCategories: parentCategories,
-        featuredProductsWomen,
-        featuredProductsMen,
-        newArivalMen,
-        newArivalWomen,
+        // featuredProductsWomen,
+        // featuredProductsMen,
+        // newArivalMen,
+        // newArivalWomen,
         saleCategories,
         message : getErrorMessage(req),
     });
