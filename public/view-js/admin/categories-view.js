@@ -78,6 +78,14 @@ $(function () {
         validationRules: { required: true },
         width: 20,
       },
+      // {
+      //   field: "_id",
+      //   headerText: "_id",
+      //   textAlign: ej.TextAlign.Center,
+      //   template: "<img class='category-image' src='/category/api/image/\{{: _id }}?height=500&width=500&quality=70'>",
+      //   validationRules: { required: true, number: false },
+      //   width: 40,
+      // },
       {
         field: "Image",
         headerText: "Image",
