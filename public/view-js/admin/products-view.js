@@ -21,7 +21,7 @@ function gertProduct_image1() {
   reader.readAsDataURL(f[0]);
 }
 
-let populateParentProductDropDown = function (data) {
+let populateCategoryDropDownOld = function (data) {
   $("#ProductCategory").ejDropDownList({
     dataSource: data.Items,
     watermarkText: "Select Parent Product",
@@ -31,6 +31,19 @@ let populateParentProductDropDown = function (data) {
   });
   // $("#ProductParent").ejDropDownList({width: 100});
 };
+
+let populateCategoryDropDown = function (data) {
+  $("#ProductCategory").ejDropDownList({ 
+    dataSource: data.Items,
+    watermarkText: "Select Parent Product",
+    fields: { text: "Name", value: "_id" },
+    enableFilterSearch: true,
+    width : "100%",
+    multiSelectMode: "visualmode",
+  });
+  // $("#ProductParent").ejDropDownList({width: 100});
+};
+
 let populateSaleCategoryDropDown = function (data) {
   $("#ProductSaleCategory").ejDropDownList({
     dataSource: data.Items,
@@ -59,7 +72,9 @@ let getSaleCategories = function () {
     url: "/admin/api/salecategories",
     type: "GET",
     success: function (data) {
-      global_sale_category_data = data;
+      data.Items = [{Name:'None', _id: ""}].concat(data.Items);
+      data.Count++;
+      global_sale_category_data= data;
     },
     error: function (error) {
       console.log(error);
@@ -202,7 +217,7 @@ let completeProduct = function (args) {
 
     document.getElementById('Product_image').src = "/admin/api/products/mainimage/"+args.rowData._id+"?height=150&width=150&quality=70";
     document.getElementById('Product_image1').src = "/admin/api/products/seondaryimage/"+args.rowData._id+"?height=150&width=150&quality=70";
-    populateParentProductDropDown(global_Product_data);
+    populateCategoryDropDown(global_Product_data);
     populateSaleCategoryDropDown(global_sale_category_data);
     var obj = $("#ProductCategory").data("ejDropDownList");
     var obj1 = $("#ProductSaleCategory").data("ejDropDownList");
@@ -216,7 +231,7 @@ let completeProduct = function (args) {
   else if (args.requestType == "add") {
     $('#ProductDescription').richText();
     document.getElementById("ProductFeatured").checked = false;
-    populateParentProductDropDown(global_Product_data);
+    populateCategoryDropDown(global_Product_data);
     populateSaleCategoryDropDown(global_sale_category_data);
   }
   if (args.requestType == "save") {

@@ -213,7 +213,9 @@ router.put("/", (req, res) => {
             MainImage: image1type + ';base64,' + encode_image1,
             SecondaryImage: image2type + ';base64,' + encode_image2,
             IsFeatured: req.body.ProductFeatured,
-            Category: req.body.ProductCategory,
+            Category: typeof req.body.hiddenEle === "undefined"
+                ? []
+                : req.body.hiddenEle.split(","),
             SaleCategory : req.body.ProductSaleCategory,
             Size: req.body.ProductSize,
             Color: req.body.ProductColor,
@@ -247,7 +249,9 @@ router.put("/", (req, res) => {
         DiscountedPrice: req.body.ProductDiscountedPrice,
         StockAvailable: req.body.ProductStockAvailable,
         IsFeatured: req.body.ProductFeatured,
-        Category: req.body.ProductCategory,
+        Category: typeof req.body.hiddenEle === "undefined"
+                ? []
+                : req.body.hiddenEle.split(","),
         SaleCategory : req.body.ProductSaleCategory,
         Size: req.body.ProductSize,
         Color: req.body.ProductColor,
@@ -300,7 +304,9 @@ router.post("/", async (req, res) => {
           MainImage: image1type + ';base64,' + encode_image1,
           SecondaryImage: image2type + ';base64,' + encode_image2,
           IsFeatured: req.body.ProductFeatured,
-          Category: req.body.ProductCategory,
+          Category: typeof req.body.hiddenEle === "undefined"
+                ? []
+                : req.body.hiddenEle.split(","),
           SaleCategory : req.body.ProductSaleCategory,
           Size: req.body.ProductSize,
           Color: req.body.ProductColor,
@@ -331,7 +337,9 @@ router.post("/", async (req, res) => {
       DiscountedPrice: req.body.ProductDiscountedPrice,
       StockAvailable: req.body.ProductStockAvailable,
       IsFeatured: req.body.ProductFeatured,
-      Category: req.body.ProductCategory,
+      Category: typeof req.body.hiddenEle === "undefined"
+                ? []
+                : req.body.hiddenEle.split(","),
       SaleCategory : req.body.ProductSaleCategory,
       Size: req.body.ProductSize,
       Color: req.body.ProductColor,

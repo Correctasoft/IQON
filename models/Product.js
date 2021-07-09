@@ -62,7 +62,7 @@ const ProductSchema = new Schema({
     default: false,
   },
   Category: {
-    type: Schema.Types.ObjectId,
+    type: [Schema.Types.ObjectId],
     ref: 'Category'
   },
   SaleCategory: {

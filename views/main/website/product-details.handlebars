@@ -171,9 +171,11 @@
                             <div class="product-details-footer">
                                 <div class="product-cat">
                                     <span>Category:</span>
-                                    {{!-- <a href="#">Women</a>,
-                                    <a href="#">Dresses</a>, --}}
-                                    <a href="/shop/category/{{product.Category.Slug}}">{{product.Category.Name}}</a>
+                                    |
+                                    {{#each product.Category}}
+                                    <a href="/shop/category/{{Slug}}">{{Name}}</a> | 
+                                    {{/each}}
+                                    
                                 </div><!-- End .product-cat -->
 
                                 {{!-- <div class="social-icons social-icons-sm">

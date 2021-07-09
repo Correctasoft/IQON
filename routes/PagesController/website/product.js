@@ -37,6 +37,7 @@ router.get('/:slug', getCommonData, getLoggedInCustomer, async (req, res) => {
         path: 'Category',
         model: categoryModel
     });
+
     let message = null;
     if(req.query.msg){
         if(req.query.msg == 1){
