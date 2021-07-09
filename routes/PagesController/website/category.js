@@ -12,7 +12,7 @@ router.get('/:slug', getCommonData, async (req, res)=>{
     let category = mongooseToObj(await categoryModel.findOne({Slug: req.params.slug}));
     let children = multipleMongooseToObj(await categoryModel.find({Parent: category._id, IsDelete: false}));
     for(let i=0; i<children.length; i++){
-        children[i].product_count = await productModel.countDocuments({Category: children[i]._id});
+        children[i].product_count = await productModel.countDocuments({Category: children[i]._id, IsDelete: false});
     }
     return res.render('main/website/categorylist', {
         layout: 'website/base',
