@@ -90,7 +90,7 @@ $(function () {
         field: "Image",
         headerText: "Image",
         textAlign: ej.TextAlign.Center,
-        template: "<img class='category-image' src='\{{: Image }}'>",
+        template: "<img class='category-image' src='/admin/api/categories/image/\{{:_id}}?height=150&width=150&quality=70'>",
         validationRules: { required: true, number: false },
         width: 40,
       },
@@ -130,7 +130,8 @@ let completeCategory = function (args) {
   if (args.requestType == "beginedit") {
     document.getElementById("categoryIsFeatured").checked = args.rowData.IsFeatured;
     populateParentCategoryDropDown(global_category_data);
-    console.log(args.rowData);
+    
+    document.getElementById('category_image').src = "/admin/api/categories/image/"+args.rowData._id+"?height=150&width=150&quality=70";
     var obj = $("#categoryParent").data("ejDropDownList");
     if (args.rowData.Parent) {
       obj.selectItemByValue(args.rowData.Parent._id);
