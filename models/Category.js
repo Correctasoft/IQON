@@ -14,7 +14,7 @@ const CategorySchema = new Schema({
   },
   Slug : {
     type :String,
-    slug: 'Name'
+    slug: ["Name", "id"]
   },
   Image :{
     type : String
