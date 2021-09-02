@@ -75,7 +75,10 @@
             {{#each parentCategories}}
             <div class="col-lg-6 ml-auto mr-auto">
                 <div class="banner banner-big banner-overlay">
-                    <a href="/shop/category/{{Slug}}">
+                    {{!-- <a href="/shop/category/{{Slug}}">
+                        <img src="{{Image}}" alt="Banner">
+                    </a> --}}
+                    <a href="/category/{{Slug}}">
                         <img src="{{Image}}" alt="Banner">
                     </a>
 
@@ -84,7 +87,7 @@
                         <!-- End .banner-subtitle -->
                         <h2 class="banner-title text-white"><a href="#">Shop {{Name}}</a></h2>
                         <!-- End .banner-title -->
-                        <a href="/shop/category/{{Slug}}" class="btn underline"><span>Discover Now</span></a>
+                        <a href="/category/{{Slug}}" class="btn underline"><span>Discover Now</span></a>
                     </div><!-- End .banner-content -->
                 </div><!-- End .banner -->
             </div><!-- End .col-lg-6 -->
