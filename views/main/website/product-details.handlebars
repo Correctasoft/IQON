@@ -7,6 +7,21 @@
     .product-gallery-item{
         height: 110px;
     }
+
+    .product-main-image {
+        height: 550px;
+    }
+    .product-main-image img {
+            height: 100%;
+        }
+    @media screen and (max-width: 500px){
+        .product-main-image {
+            {{!-- height: 475px; --}}
+        }
+        .product-main-image img {
+            height: 100%;
+        }
+    }
 </style>
 <main class="main">
     {{!-- <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
@@ -76,6 +91,7 @@
 
                     
                     <div class="col-md-6">
+                        
                         <form id="proudct-form" method="POST">
                         <div class="product-details">
                             <h1 class="product-title">{{product.Name}}</h1>
